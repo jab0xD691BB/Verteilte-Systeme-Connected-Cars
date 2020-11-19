@@ -46,7 +46,7 @@ Werden die angeforderten Sensordaten richtig übertragen?
 
 
 ___
-__Aufgabe 2 RPC__  
+__Aufgabe RPC__  
 Die aktuellen Werte der Sensoren wird über Thrift an die Server des Anbieters übertragen. Die Programmierschnittstelle wird an beiden Seiten implementiert (Zentrale und Client(Anbieter)). Der Anbieter speichert die übermittelten Daten persistent.  
 
 Remote Procedure Call ermöglicht einen entfernteren Aufruf einer Prozedur. Mit Remote Procedure Call können Clients auf einem entfernten Server Prozeduren aufrufen.
@@ -54,7 +54,7 @@ Remote Procedure Call ermöglicht einen entfernteren Aufruf einer Prozedur. Mit 
 
 
 ___
-__Aufgabe 3 MoM mittels MQTT__  
+__Aufgabe MoM mittels MQTT__  
 UDP Verbindung zwischen UDP-Client & UDP-Server aus Aufgabe 1a wird ersetzt durch MQTT. 
 
 
@@ -63,3 +63,8 @@ ___
 
 __Status__
 
+- [ ] Aufgabe Projektplan
+- [ ] Aufgabe UDP TCP HTPP
+- [ ] Aufgabe RPC
+- [ ] Aufgabe MoM mittels MQTT
+- [ ] Aufgabe Hochverfügbarkeit und Konsistenz
