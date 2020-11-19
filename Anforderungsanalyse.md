@@ -1,4 +1,4 @@
-# Verteilte Systeme - Praktikum - Smarthome
+# Verteilte Systeme - Praktikum - Connected Cars
 
 ### Allgemein
 
