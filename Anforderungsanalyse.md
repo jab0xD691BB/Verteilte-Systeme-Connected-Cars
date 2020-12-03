@@ -2,16 +2,19 @@
 
 ### Allgemein
 
-Mindestens drei Sensoren sollen die Zentrale(Server) mit Daten versorgen.  
-Die Daten zur Zentrale werden per udp übertragen.
+In einem Auto(Subsystem) befinden sich drei Sensoren(Clients) und eine Zentrale die als Server ihre Aufgabe dient. Die Sensoren versorgen im Sekundentakt die Zentrale mit Daten, welche über UDP übertragen werden.
+Dort werden die Nachrichten unter Angabe von IP, Port und Typ des Sensors auf der Standardausgabe ausgegeben.
+
+
 Die Zentrale hat auch ein HTTP-Server, damit man über ein Webbrowser, die Daten der Sensoren verfolgen kann. Die Übertragung geschieht über TCP-HTTP (Socket).  
 Später werden die Daten der Sensoren vom Zentralserver, an den Server des Anbieters übermittelt.  
 ___
 ### Systeme
-- min. 3 Sensoren
+- vier Sensoren
 - Zentrale (UDP-Server, HTTP-Server?)
 - Server des Anbieters
 - externe Geräte (Webbrowser)
+Dazu ist in mehreren Phasen jeweils ein Teil des Gesamtsystems zu erstellen, wie in Abbildung xy dargestellt.
 ___
 ### __Anforderungsanalyse__  
 
