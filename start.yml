@@ -15,7 +15,7 @@ services:
     environment:
       - sensorname=Kilometerstand
       - sensorip=station
-      - sensorport=9876
+      - sensorport=9877
   sensor-verkehrssituation:
     build:
       context: ./carstation/sensor
@@ -23,7 +23,7 @@ services:
     environment:
       - sensorname=Verkehrssituation
       - sensorip=station
-      - sensorport=9876
+      - sensorport=9878
   sensor-avgspeed:
     build:
       context: ./carstation/sensor
@@ -31,7 +31,7 @@ services:
     environment:
       - sensorname=avgSpeed
       - sensorip=station
-      - sensorport=9876
+      - sensorport=9879
   station:
     build:
       context: ./carstation/station
