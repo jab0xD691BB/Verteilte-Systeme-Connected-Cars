@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  sensor-tank:
+    build:
+      context: ./carstation/sensor
+      dockerfile: Dockerfile
+    environment:
+      - sensorname=Tank
+      - sensorip=station
+      - sensorport=9876
+  sensor-kilometerstand:
+    build:
+      context: ./carstation/sensor
+      dockerfile: Dockerfile
+    environment:
+      - sensorname=Kilometerstand
+      - sensorip=station
+      - sensorport=9876
+  sensor-verkehrssituation:
+    build:
+      context: ./carstation/sensor
+      dockerfile: Dockerfile
+    environment:
+      - sensorname=Verkehrssituation
+      - sensorip=station
+      - sensorport=9876
+  sensor-avgspeed:
+    build:
+      context: ./carstation/sensor
+      dockerfile: Dockerfile
+    environment:
+      - sensorname=avgSpeed
+      - sensorip=station
+      - sensorport=9876
+  station:
+    build:
+      context: ./carstation/station
+      dockerfile: Dockerfile
+    ports:
+        - 9876:9876/udp
+        - 9877:9877/udp
+        - 9878:9878/udp
+        - 9879:9879/udp
+        - 3124:3124/tcp
+    

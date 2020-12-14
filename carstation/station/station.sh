@@ -1,0 +1,1 @@
+java -jar /usr/app/station-1.0-SNAPSHOT.jar
