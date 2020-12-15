@@ -2,17 +2,16 @@
 
 ### Allgemein
 
-In einem Auto(Subsystem) befinden sich vier Sensoren(Clients) und eine Zentrale die als Server ihre Aufgabe dient. Die Sensoren versorgen im Sekundentakt die Zentrale mit Daten, welche über UDP übertragen werden.
+In einem Auto(Subsystem) befinden sich vier Sensoren(Clients) und eine Zentrale die als Server ihre Aufgabe leistet. Die Sensoren versorgen im Sekundentakt die Zentrale mit Daten, welche über UDP übertragen werden.
 Dort werden die Nachrichten unter Angabe von IP, Port und Typ des Sensors auf der Standardausgabe ausgegeben.
 
-
-Die Zentrale hat auch ein HTTP-Server, damit man über ein Webbrowser, die Daten der Sensoren verfolgen kann. Die Übertragung geschieht über TCP-HTTP (Socket).  
-Später werden die Daten der Sensoren vom Zentralserver, an den Server des Anbieters übermittelt.  
+Die Zentrale dient ebenfalls als ein HTTP-Server, damit man über ein Webbrowser, die Daten der Sensoren verfolgen kann. Die Kommunikation geschieht über TCP-HTTP (Socket).  
+Später werden die Sensordaten vom Zentralserver, an einen Service Provider übermittelt, wo die Daten dann redundant ausgelegt werden sollen.  
 ___
 ### Systeme
-- vier Sensoren
-- Zentrale (UDP-Server, HTTP-Server?)
-- Server des Anbieters
+- Vier Sensoren(Clients)
+- Eine Zentrale (UDP-Server, HTTP-Server)
+- 
 - externe Geräte (Webbrowser)
 Dazu ist in mehreren Phasen jeweils ein Teil des Gesamtsystems zu erstellen, wie in Abbildung xy dargestellt.
 ___
@@ -23,7 +22,7 @@ IDE: IntelliJ
 Build-Tool: Maven  
 Test: JUnit  
 Deployment: Docker
-
+Beachten der nicht-Funktionalen Anforderungen!
 ___
 __Zu Aufgabe 2 UDP Sockets__  
 Die Sensoren erfassen jeweils folgende Werte: Füllstand des Tanks, Kilometerstand, Verkehrssituation und Durschnittsgeschwindigkeit. Diese werden zufällig in einem bestimmten Bereich z.B Verkehrssituation (frei, mäßiger Verrkehr, starker Verkehr, Stau), generiert. Jeder Sensor wird als eigenständiger Prozess bzw. als Container gestartet. Die Werte werden periodisch an den Zentralserver gesendet. Desweiteren werden noch die IP, Port sowie Typ des Sensors and die Zentrale verschickt und dort in der Konsole ausgeben. Die Kommunikation läuft über UDP - Socket und ist unidirektional.  
