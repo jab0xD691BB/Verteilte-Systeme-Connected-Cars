@@ -10,8 +10,8 @@ public class main {
     String decodedPath = URLDecoder.decode(path, "UTF-8");
     System.out.println("path: " + decodedPath);
 
-    Udplistener[] udpl = new Udplistener[4]; //2 request auf dem gleichen port geht noch, ab 3 spinnt das programm. mit threads läufts gut
-    int portstart = 9876;
+    //Udplistener[] udpl = new Udplistener[4]; //2 request auf dem gleichen port geht noch, ab 3 spinnt das programm. mit threads läufts gut
+    //int portstart = 9876;
     try {
     /*  for (int i = 0; i < udpl.length; i++) {
         udpl[i] = new Udplistener(portstart);

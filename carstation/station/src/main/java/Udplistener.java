@@ -7,6 +7,8 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -17,6 +19,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import org.json.*;
+
 
 
 public class Udplistener implements Runnable {
@@ -60,6 +63,7 @@ public class Udplistener implements Runnable {
 
         String styp = jsonObject.getString("sensorType");
         String svalue = jsonObject.getString("sensorValue");
+
 
         System.out.println("receive: " + r);
 

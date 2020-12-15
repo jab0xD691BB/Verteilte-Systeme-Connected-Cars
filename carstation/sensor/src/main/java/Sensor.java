@@ -3,6 +3,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.sql.Timestamp;
 import java.util.Random;
 import org.json.JSONObject;
 
@@ -69,5 +71,28 @@ public class Sensor {
 
     DatagramPacket dp = new DatagramPacket(sendData, sendData.length, addr, Integer.parseInt(sensorPort));
     clientSocket.send(dp);
+
+  }
+
+  public JSONObject sendTest(String json) throws IOException {
+    JSONObject jsonObject = new JSONObject(json);
+
+    jsonObject.put("sensorType", "Test");
+    jsonObject.put("sensorIp", "127.0.0.1");
+    jsonObject.put("sensorPort", "9876");
+    jsonObject.put("sensorValue", "15");
+
+
+    System.out.println("Send: " + jsonObject.toString());
+
+    byte[] sendData = new byte[1024];
+    sendData = jsonObject.toString().getBytes();
+
+    InetAddress addr = InetAddress.getByName(sensorIp);
+
+    DatagramPacket dp = new DatagramPacket(sendData, sendData.length, addr, Integer.parseInt(sensorPort));
+    clientSocket.send(dp);
+
+    return jsonObject;
   }
 }
