@@ -13,7 +13,7 @@ ___
 - Eine Zentrale (UDP-Server, HTTP-Server)
 - Anbindung eines Service-Providers mittels einer RPC(Thrift)
 - externe Geräte (Webbrowser)
-Dazu ist in mehreren Phasen jeweils ein Teil des Gesamtsystems zu erstellen, wie in Abbildung xy dargestellt.
+Dazu ist in mehreren Phasen(Meilensteine) jeweils ein Teil des Gesamtsystems zu erstellen, wie in Abbildung 1 dargestellt.
 ___
 ### __Anforderungsanalyse__  
 
@@ -25,7 +25,7 @@ Deployment: Docker
 
 Beachten der nicht-Funktionalen Anforderungen:
 1.  Hygiene des Git-Repositories
-Um unerwünschte Dateien aus den Git-Repositories fern zu halten, erhält jedes Repository eine ver-nünftige .gitignore Datei. Diese sorgt dafür, dass z.B. Bibliotheken und Kompilate nicht in das Re-pository eingecheckt werden können.
+    Um unerwünschte Dateien aus den Git-Repositories fern zu halten, erhält jedes Repository eine ver-nünftige .gitignore Datei. Diese sorgt dafür, dass z.B. Bibliotheken und Kompilate nicht in das Re-pository eingecheckt werden können.
 2.  Dokumentation
 Jede Software wird in einer README.md Datei dokumentiert. Diese Datei beinhaltet eine detail-lierte Anleitung wie die Software kompiliert und mittels Docker und Docker-Compose gestartet undgetestet werden kann.
 3.  Lizenzen
