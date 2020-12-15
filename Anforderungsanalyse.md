@@ -48,6 +48,8 @@ Festlegung der Meilensteine:
 
 ![Alt-Text](/abbildung2.png)
 
+_Abbildung 2 - Systemdesign zum Meilenstein 1_
+
 2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und getestet.
 
     System: 
