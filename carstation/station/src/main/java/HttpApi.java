@@ -43,33 +43,29 @@ public class HttpApi implements Runnable {
         BufferedReader httpIn = new BufferedReader(
             new InputStreamReader(connectionSocket.getInputStream()));
 
-        //System.out.println(connectionSocket.toString());
         DataOutputStream httpOut = new DataOutputStream(connectionSocket.getOutputStream());
 
         HttpReq httpReq = new HttpReq(httpIn);
 
-        if (httpReq.path.equals("/")) {
-          String body = getContentOfFile(httpReq);
-          String header = this
-              .writeHttpHeader("200 Ok", Integer.toString(body.length()), "text/html");
-          httpOut.writeBytes(header.concat(body));
 
-          // }else{
-          //String header = this.writeHttpHeader("404 Not Found", "0");
-          //httpOut.writeBytes(header);
-        } else if (httpReq.path.equals("/favicon.ico")) {
-          int i = 0;
-          String fileName = httpReq.path.replace("/", "");
-          File f = new File(fileName);
-          FileInputStream fin = new FileInputStream(f);
+        int i = 0;
+        if (httpReq.path.equals(".")) {
 
-          byte[] fileContent = Files.readAllBytes(f.toPath());
-          String body = new String(fileContent);
-          String header = this
-              .writeHttpHeader("200 Ok", Integer.toString(body.length()), "application/json");
-          httpOut.writeBytes(header.concat(body));
+          if(httpReq.file.equals("favicon.ico")){
+            byte[] fileContent = Files.readAllBytes(new File(httpReq.file).toPath());
+            String body = new String(fileContent);
+            String header = this
+                .writeHttpHeader("200 Ok", Integer.toString(body.length()), "application/json");
+            httpOut.writeBytes(header.concat(body));
 
-        } else if (httpReq.path.contains("values")) {
+          }else{
+            String body = getContentOfFile(httpReq);
+            String header = this
+                .writeHttpHeader("200 Ok", Integer.toString(body.length()), "text/html");
+            httpOut.writeBytes(header.concat(body));
+          }
+
+        } else if (httpReq.path.equals("values")) {
           String body = getContentOfFile(httpReq);
           String header = this
               .writeHttpHeader("200 Ok", Integer.toString(body.length()), "application/json");
@@ -105,36 +101,38 @@ public class HttpApi implements Runnable {
 
   private String getContentOfFile(HttpReq httpReq) {
 
-
-
     try {
-      File file = new File(httpReq.path, "index.html");
+      File file = new File(httpReq.path,httpReq.file);
       Scanner myReader = new Scanner(file);
-      if(httpReq.path.equals("/")){
-        String line = "";
+      if (httpReq.path.equals(".")) {
+
+
+        StringBuilder line = new StringBuilder();
         while (myReader.hasNextLine()) {
-            line.concat(myReader.nextLine());
+          line.append(myReader.nextLine());
         }
 
-        return line;
-      }else{
+        return line.toString();
+      } else {
         JSONObject jsonObject = new JSONObject();
-        String[] pathArr = httpReq.path.split("/");
-        String dir = pathArr[1];
-        String fileName = pathArr[2];
 
         while (myReader.hasNextLine()) {
           String data = myReader.nextLine();
-          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-          Date parsedDate = dateFormat.parse(data.split(" ")[0] + " " + data.split(" ")[1]);
-          Timestamp timestamp = new Timestamp(parsedDate.getTime());
-          jsonObject.put(timestamp.toString(),
-              data.split(" ")[2]); // 0+1: timestamp 2: value
+          if(!httpReq.file.contains("active")) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+            Date parsedDate = dateFormat.parse(data.split(" ")[0] + " " + data.split(" ")[1]);
+            Timestamp timestamp = new Timestamp(parsedDate.getTime());
+            jsonObject.put(timestamp.toString(),
+                data.split(" ")[2]); // 0+1: timestamp 2: value
+          }else{
+            jsonObject.put("activeSensor", data);
+            return  jsonObject.toString();
+          }
           System.out.println("data: " + data);
         }
 
         JSONObject jsonObjectArr = new JSONObject(); //titel
-        jsonObjectArr.put(fileName, jsonObject);
+        jsonObjectArr.put(httpReq.file, jsonObject);
 
         return jsonObjectArr.toString(2);
       }
@@ -143,7 +141,7 @@ public class HttpApi implements Runnable {
 
     }
 
-      return "";
+    return "";
   }
 
   private void printInputStream(BufferedReader bufferedReader) {

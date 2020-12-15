@@ -15,6 +15,9 @@ COPY --from=build /usr/src/station/target /usr/app
 #ordner mit den werten in container-root kopieren & favico
 COPY values values
 COPY favicon.ico favicon.ico
+COPY index.html index.html
+COPY index.css index.css
+COPY index.js index.js
 
 # default paramters 
 ARG sensorname="Default"

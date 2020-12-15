@@ -1,3 +1,43 @@
+*{
+    margin: 0;
+}
+
 #content{
-    background-color: green;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: rgba(177, 177, 177, 0.364);
+    text-align: center;
+
+}
+
+h1{
+    margin-bottom: 5%;
+}
+
+button{
+    font-size:120%;
+    width: 40%;
+    height: 15%;
+}
+
+a{
+    text-decoration: none;
+}
+
+#activeSensor{
+    width: 100%;
+    height: 50%;
+    text-align: center;
+
+}
+
+.activeSensor{
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.sensorTitel{
+    font-size: 140%;
 }

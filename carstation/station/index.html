@@ -1,16 +1,33 @@
 <html>
 <head>
-</head>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
 <body>
 <div id="content">
 <h1>Sensor</h1>
-<p><a href="http://127.0.0.1:3124/values/currentTankvalue">momentaner tank wert</a></p>
-<p><a href="http://127.0.0.1:3124/values/historyTankvalue">alle tank werte</a></p>
-<p><a href="http://127.0.0.1:3124/values/currentKilometerstandvalue">momentaner Kilometerstand werte</a></p>
-<p><a href="http://127.0.0.1:3124/values/historyKilometerstandvalue">alle Kilometerstand werte</a></p>
-<p><a href="http://127.0.0.1:3124/values/historyVerkehrssituationvalue">alle Verkehrssituation werte</a></p>
-<p><a href="http://127.0.0.1:3124/values/currentavgSpeedvalue">momentaner avgSpeed werte</a></p>
-<p><a href="http://127.0.0.1:3124/values/historyavgSpeedvalue">alle avgSpeed werte</a></p>
+<div id="activeSensor">
+    <div id="tanks">
+    <p class="sensorTitel">Tank</p>
+    <button id="activeTank" class="activeSensor" onclick="window.open('http://127.0.0.1:3124/values/currentTankvalue.txt', '_blank')">current</button>
+    <button id="activeTank" class="activeSensor" onclick="window.open('http://127.0.0.1:3124/values/historyTankvalue.txt', '_blank')">history</button>
+    </div>
+<div id="kilometerstands">
+    <p class="sensorTitel">Kilometerstand</p>
+    <button   button id="activeKilometerstand" class="activeSensor" onclick="window.open('http://127.0.0.1:3124/values/currentKilometerstandvalue.txt', '_blank')">current</button>
+    <button id="activeKilometerstand" class="activeSensor" onclick="window.open('http://127.0.0.1:3124/values/historyKilometerstandvalue.txt', '_blank')">history</button>
+</div>
+<div id="verkehrssituations">
+    <p class="sensorTitel">Verkehrssituation</p>
+    <button   button id="activeVerkehrssituation" class="activeSensor" onclick="window.open('http://127.0.0.1:3124/values/currentavgSpeedvalue.txt', '_blank')">current</button>
+    <button id="activeVerkehrssituation" class="activeSensor" onclick="window.open('http://127.0.0.1:3124/values/historyavgSpeedvalue.txt', '_blank')">history</button>
+</div>
+<div id="avgspeed">
+    <p class="sensorTitel">avgSpeed</p>
+    <button id="activeavgSpeed" class="activeSensor"onclick="window.open('http://127.0.0.1:3124/values/currentavgSpeedvalue.txt', '_blank')"> current</button>
+    <button id="activeavgSpeed" class="activeSensor"onclick="window.open('http://127.0.0.1:3124/values/historyavgSpeedvalue.txt', '_blank')"> history</button>
+</div>
+</div>
+
 </div>
 </body>
 </html>
