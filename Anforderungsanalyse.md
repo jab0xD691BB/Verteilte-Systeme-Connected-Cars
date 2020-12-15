@@ -45,6 +45,9 @@ Festlegung der Meilensteine:
 
                 - HTTP Kommunikation mit der Zentrale(Server) vom Browser aus.
 
+
+![Alt-Text](/abbildung2.png)
+
 2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und getestet.
 
     System: 
