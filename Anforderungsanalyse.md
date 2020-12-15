@@ -116,7 +116,7 @@ Testbarkeit:
 
 
 ___
-__Protokoll - Testverfahren Zu Aufgabe 2__  
+__Protokoll - Testverfahren zu Aufgabe 2__  
 
 Funktionaler Test:  
 
@@ -126,7 +126,7 @@ Performance Test:
 
 ___
 
-__Protokoll - Testverfahren Zu Aufgabe 3__  
+__Protokoll - Testverfahren zu Aufgabe 3__  
 
 Funktionaler Test:  
 
@@ -136,7 +136,7 @@ Performance Test:
 
 ___
 
-__Protokoll - Testverfahren Zu Aufgabe 4__  
+__Protokoll - Testverfahren zu Aufgabe 4__  
 
 Funktionaler Test:  
 
@@ -146,7 +146,7 @@ Performance Test:
 
 ___
 
-__Protokoll - Testverfahren Zu Aufgabe 5__  
+__Protokoll - Testverfahren zu Aufgabe 5__  
 
 Funktionaler Test:  
 
