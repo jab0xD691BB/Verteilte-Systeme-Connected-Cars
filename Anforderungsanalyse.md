@@ -2,7 +2,7 @@
 
 ### Allgemein
 
-In einem Auto(Subsystem) befinden sich drei Sensoren(Clients) und eine Zentrale die als Server ihre Aufgabe dient. Die Sensoren versorgen im Sekundentakt die Zentrale mit Daten, welche über UDP übertragen werden.
+In einem Auto(Subsystem) befinden sich vier Sensoren(Clients) und eine Zentrale die als Server ihre Aufgabe dient. Die Sensoren versorgen im Sekundentakt die Zentrale mit Daten, welche über UDP übertragen werden.
 Dort werden die Nachrichten unter Angabe von IP, Port und Typ des Sensors auf der Standardausgabe ausgegeben.
 
 
