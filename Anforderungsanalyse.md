@@ -25,12 +25,19 @@ Deployment: Docker
 
 Beachten der nicht-Funktionalen Anforderungen:
 1.  Hygiene des Git-Repositories
-    Um unerwünschte Dateien aus den Git-Repositories fern zu halten, erhält jedes Repository eine ver-nünftige .gitignore Datei. Diese sorgt dafür, dass z.B. Bibliotheken und Kompilate nicht in das Re-pository eingecheckt werden können.
+
+Um unerwünschte Dateien aus den Git-Repositories fern zu halten, erhält jedes Repository eine ver-nünftige .gitignore Datei. Diese sorgt dafür, dass z.B. Bibliotheken und Kompilate nicht in das Re-pository eingecheckt werden können.
+
 2.  Dokumentation
+
 Jede Software wird in einer README.md Datei dokumentiert. Diese Datei beinhaltet eine detail-lierte Anleitung wie die Software kompiliert und mittels Docker und Docker-Compose gestartet undgetestet werden kann.
+
 3.  Lizenzen
+
 Jedes Repository muss über ein Lizenz-File verfügen welches die Lizenz der Software ausweist.
+
 4.  Docker und Docker-Compose
+
 Jede Software wird containerisiert und läuft in Docker Version 19.03 sowie mit Docker-Compose Version 1.24. Das Docker-Compse File ist in Version 3.7 geschrieben.
 ___
 __Zu Aufgabe 2 UDP Sockets__  
