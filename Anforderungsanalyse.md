@@ -10,7 +10,7 @@ Später werden die Sensordaten vom Zentralserver, an einen Service Provider übe
 
 Abbildung 1 zeigt eine grobe Übersicht des Systems welches vorgegeben wurde.
 
-![Alt-Text](/Abbildung1.PNG)
+![Alt-Text](/Abbildung1.png)
 ___
 ### Systeme
 - Vier Sensoren(Clients)
