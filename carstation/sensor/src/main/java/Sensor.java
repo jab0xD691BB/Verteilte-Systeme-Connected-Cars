@@ -45,7 +45,7 @@ public class Sensor {
   public void sendValue() throws IOException {
     generateValue();
 
-   /* StringBuilder jsonFormat = new StringBuilder(); fehlt "" zeichen bei den werten
+   /* StringBuilder jsonFormat = new StringBuilder(); "" fehlt bei den werten
     jsonFormat.append("{")
         .append("sensorType").append(":").append(sensorType).append(",")
         .append("sensorIp").append(":").append(sensorIp).append(",")

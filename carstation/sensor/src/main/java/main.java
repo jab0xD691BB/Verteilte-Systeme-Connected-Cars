@@ -23,8 +23,6 @@ public class main {
       } catch (Exception e) {
         Thread.currentThread().interrupt();
       }
-
-
     }
 
   }

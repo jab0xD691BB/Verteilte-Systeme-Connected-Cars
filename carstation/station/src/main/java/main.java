@@ -13,14 +13,14 @@ public class main {
     Udplistener[] udpl = new Udplistener[4]; //2 request auf dem gleichen port geht noch, ab 3 spinnt das programm. mit threads läufts gut
     int portstart = 9876;
     try {
-      for (int i = 0; i < udpl.length; i++) {
+    /*  for (int i = 0; i < udpl.length; i++) {
         udpl[i] = new Udplistener(portstart);
         Thread t = new Thread(udpl[i]);
         t.start();
         portstart++;
-      }
-      //Thread ta = new Thread(new Udplistener(9876));
-      //ta.start();
+      }*/
+      Thread ta = new Thread(new Udplistener(9876));
+      ta.start();
 
     } catch (IOException e) {
       return;
