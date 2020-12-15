@@ -79,7 +79,7 @@ Build-Tool: Maven
 Test: JUnit  
 Deployment: Docker
 
-Zu jeder Aufgabenstellung (2-5) muss es jeweils einen Funktionalen, einen nicht Funktionalen und einen Performance Test geben.
+Zu jeder Aufgabenstellung (2-5) muss es jeweils einen Funktionalen, einen nicht Funktionalen und einen Performance Test geben. Diese werden weiter unten protokolliert. 
 
 Beachten der nicht-Funktionalen Anforderungen:
 1.  Hygiene des Git-Repositories
@@ -106,7 +106,7 @@ Die Sensoren erfassen jeweils folgende Werte: Füllstand des Tanks, Kilometersta
 Der String, der Übertragen wird, sieht wie folgt aus: < IP-Adresse : Port : Sensorname : XY Wert >.
 
 Funktionale Tests:  
-Werden die Werte richtig übertragen?  
+Werden die Werte richtig übertragen?
 Werden die Daten richtig decodiert?
 
 Nicht-Funktionale Tests:  
