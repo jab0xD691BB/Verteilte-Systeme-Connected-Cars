@@ -44,7 +44,32 @@ Festlegung der Meilensteine:
                 - HTTP Kommunikation mit der Zentrale(Server) vom Browser aus.
 
 2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und getestet.
+
+    System: 
+
+            - Zentrale sendet die aktuellen Werte der Sensoren, über einen RPC (Thrift) an die Cloud eines Dienstanbieters:
+
+                - Dienstanbierter erzeugen (Service Provider).
+
+                - Thrift-Datei beschriebene API am Server (Server des Anbieters) als auch am Client (Zentrale) implementiert.
+
+                - Anbieter speichert die übermittelten Daten persistent.
+
+            - Designänderung im Bereich der Übertragung der Sensorwerte vom Clienten an den Server:
+
+                - Übertragung der Sensorwerte per MQTT an die Zentrale (Server).
+
 3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet. Projektabschluss!
+
+    System: 
+
+            - Server des Service Providers Redundant auslegen:
+
+                - Auslegen der Daten auf zwei Server parallel in einer Primary-Secondary Architektur im Hot-Standby Betrieb.
+
+                - Die zwei Server tauschen unter Verwendung eines RPCs (Thrift oder Protobuf) untereinander die empfangenen Daten aus und speichern diese konsistent.
+
+                - Um die Ausfallsicherheit zu testen fallen während des Betriebs immer wieder zu zufälligen einzeln die Server aus. (Simuliert).
 
 Programmiersprache: Java  
 IDE: IntelliJ  
