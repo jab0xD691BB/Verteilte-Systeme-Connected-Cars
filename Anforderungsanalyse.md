@@ -81,7 +81,7 @@ _Abbildung 2 - Systemdesign zum Meilenstein 1_
 Programmiersprache: Java  
 IDE: IntelliJ  
 Build-Tool: Maven  
-Test: JUnit  
+Test: Manuel (händisch)
 Deployment: Docker
 
 Zu jeder Aufgabenstellung (2-5) muss es jeweils einen Funktionalen, einen nicht Funktionalen und einen Performance Test geben. Diese werden weiter unten protokolliert. 
@@ -124,10 +124,16 @@ ___
 __Protokoll - Testverfahren zu Aufgabe 2__  
 
 Funktionaler Test:  
+Es wird die Kommunikation zwischen dem Clienten und dem Server getestet. 
 
 nicht Funktionaler Test:    
 
 Performance Test:
+Es wird getestet, dass der Sensor die Werte schnell genug erzeugt und die auch in der vorgegenen Zeit vorbereitet und abschickt.
+Gestoppt wird hierbei die Zeit vom begin der Erzeugung der Daten über die Konvertierung als JSON Objekt bishin zum abschicken über das Socket.
+Diese gemessene Zeit sollte kleiner sein als die Zeit, die die Anforderung vorgibt immer Daten abzuschicken. In dem Fall zwei Sekunden. 
+
+Bei unserem Test ist das längste was Dauert 25 ms. 
 
 ___
 
