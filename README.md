@@ -10,3 +10,7 @@ Vorraussetzung ist das Docker lauffähig vorinstalliert ist.
 - docker-compose -f start.yml up
 
 3. Enjoy and chill 
+
+-----------------------------------------------------------
+
+Das Programm kompaliert automatisch und es ist nichts weiter zu beachten.
