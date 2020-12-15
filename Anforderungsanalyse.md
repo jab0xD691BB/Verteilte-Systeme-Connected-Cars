@@ -6,7 +6,11 @@ In einem Auto(Subsystem) befinden sich vier Sensoren(Clients) und eine Zentrale 
 Dort werden die Nachrichten unter Angabe von IP, Port und Typ des Sensors auf der Standardausgabe ausgegeben.
 
 Die Zentrale dient ebenfalls als ein HTTP-Server, damit man über ein Webbrowser, die Daten der Sensoren verfolgen kann. Die Kommunikation geschieht über TCP-HTTP (Socket).  
-Später werden die Sensordaten vom Zentralserver, an einen Service Provider übermittelt, wo die Daten dann redundant ausgelegt werden sollen.  
+Später werden die Sensordaten vom Zentralserver, an einen Service Provider übermittelt, wo die Daten dann redundant ausgelegt werden sollen.
+
+Abbildung 1 zeigt eine grobe Übersicht des Systems welches vorgegeben wurde.
+
+![Alt text](relative/path/to/img.png?raw=true "Abbildung1")
 ___
 ### Systeme
 - Vier Sensoren(Clients)
