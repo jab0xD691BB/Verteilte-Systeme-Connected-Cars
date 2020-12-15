@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,24 +49,7 @@ public class HttpApi implements Runnable {
         HttpReq httpReq = new HttpReq(httpIn);
 
         if (httpReq.path.equals("/")) {
-          String body = "<html>\n"
-              + "<head>\n"
-              + "</head>\n"
-              //  + <link rel=\"stylesheet\" type=\"text/css\" href=\"test.css\" media=\"screen\" />\n für css
-              + "<body>\n"
-              + "    <div id=\"content\">\n"
-              + "    <h1>Sensor</h1>\n"
-              + "    <p><a href=\"http://127.0.0.1:3124/values/currentTankvalue\">momentaner tank wert</a></p>\n"
-              + "    <p><a href=\"http://127.0.0.1:3124/values/historyTankvalue\">alle tank werte</a></p>\n"
-              + "    <p><a href=\"http://127.0.0.1:3124/values/currentKilometerstandvalue\">momentaner Kilometerstand werte</a></p>\n"
-              + "    <p><a href=\"http://127.0.0.1:3124/values/historyKilometerstandvalue\">alle Kilometerstand werte</a></p>\n"
-              + "    <p><a href=\"http://127.0.0.1:3124/values/currentVerkehrssituationvalue\">momentaner Verkehrssituation werte</a></p>\n"
-              + "    <p><a href=\"http://127.0.0.1:3124/values/historyVerkehrssituationvalue\">alle Verkehrssituation werte</a></p>\n"
-              + "    <p><a href=\"http://127.0.0.1:3124/values/currentavgSpeedvalue\">momentaner avgSpeed werte</a></p>\n"
-              + "    <p><a href=\"http://127.0.0.1:3124/values/historyavgSpeedvalue\">alle avgSpeed werte</a></p>\n"
-              + "    </div>  \n"
-              + "</body>\n"
-              + "</html>";
+          String body = getContentOfFile(httpReq);
           String header = this
               .writeHttpHeader("200 Ok", Integer.toString(body.length()), "text/html");
           httpOut.writeBytes(header.concat(body));
@@ -120,36 +104,46 @@ public class HttpApi implements Runnable {
   }
 
   private String getContentOfFile(HttpReq httpReq) {
-    JSONObject jsonObject = new JSONObject();
 
-    String[] pathArr = httpReq.path.split("/");
-    String dir = pathArr[1];
-    String fileName = pathArr[2];
+
 
     try {
-      File file = new File(dir, fileName + ".txt");
-      System.out.println("GET FILE: " + file.getPath());
+      File file = new File(httpReq.path, "index.html");
       Scanner myReader = new Scanner(file);
+      if(httpReq.path.equals("/")){
+        String line = "";
+        while (myReader.hasNextLine()) {
+            line.concat(myReader.nextLine());
+        }
 
-      System.out.println("can read: " + file.canRead());
-      while (myReader.hasNextLine()) {
-        String data = myReader.nextLine();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-        Date parsedDate = dateFormat.parse(data.split(" ")[0] + " " + data.split(" ")[1]);
-        Timestamp timestamp = new Timestamp(parsedDate.getTime());
-        jsonObject.put(timestamp.toString(),
-            data.split(" ")[2]); // 0+1: timestamp 2: value
-        System.out.println("data: " + data);
+        return line;
+      }else{
+        JSONObject jsonObject = new JSONObject();
+        String[] pathArr = httpReq.path.split("/");
+        String dir = pathArr[1];
+        String fileName = pathArr[2];
+
+        while (myReader.hasNextLine()) {
+          String data = myReader.nextLine();
+          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+          Date parsedDate = dateFormat.parse(data.split(" ")[0] + " " + data.split(" ")[1]);
+          Timestamp timestamp = new Timestamp(parsedDate.getTime());
+          jsonObject.put(timestamp.toString(),
+              data.split(" ")[2]); // 0+1: timestamp 2: value
+          System.out.println("data: " + data);
+        }
+
+        JSONObject jsonObjectArr = new JSONObject(); //titel
+        jsonObjectArr.put(fileName, jsonObject);
+
+        return jsonObjectArr.toString(2);
       }
 
     } catch (FileNotFoundException | ParseException e) {
 
     }
 
-    JSONObject jsonObjectArr = new JSONObject(); //titel
-    jsonObjectArr.put(fileName, jsonObject);
-
-    return jsonObjectArr.toString(2);
+      return "";
   }
 
   private void printInputStream(BufferedReader bufferedReader) {

@@ -52,7 +52,6 @@ public class Sensor {
         .append("sensorPort").append(":").append(sensorPort).append(",")
         .append("sensorValue").append(":").append(sensorValue)
         .append("}");
-
     */
 
     JSONObject jsonObject = new JSONObject();
