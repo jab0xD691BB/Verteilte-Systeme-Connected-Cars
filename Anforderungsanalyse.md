@@ -52,7 +52,7 @@ Build-Tool: Maven
 Test: JUnit  
 Deployment: Docker
 
-Zu jeder Lösung muss es jeweils einen funktionalen Test und einen performance Test geben.
+Zu jeder Aufgabenstellung (2-5) muss es jeweils einen Funktionalen, einen nicht Funktionalen und einen Performance Test geben.
 
 Beachten der nicht-Funktionalen Anforderungen:
 1.  Hygiene des Git-Repositories
