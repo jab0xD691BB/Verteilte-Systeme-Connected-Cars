@@ -24,6 +24,8 @@ Festlegung der Meilensteine:
 
             - Vier Sensoren(Clients/Prozesse) die mittels UPD Socket mit dem Zentralserver kommunizieren:
 
+                - Tanksensor;Kilometerstand;Verkehrssituation;Durschnittsgeschwindigkeit
+
                 - Sensorwerte ändern sich ständig
 
                 - Übertragung alle zwei Sekunden
