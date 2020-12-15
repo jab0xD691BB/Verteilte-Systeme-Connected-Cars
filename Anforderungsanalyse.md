@@ -13,7 +13,8 @@ ___
 - Eine Zentrale (UDP-Server, HTTP-Server)
 - Anbindung eines Service-Providers mittels einer RPC(Thrift)
 - externe Geräte (Webbrowser)
-Dazu ist in mehreren Phasen(Meilensteine) jeweils ein Teil des Gesamtsystems zu erstellen, wie in Abbildung 1 dargestellt.
+Dazu ist in mehreren Phasen(Meilensteine) jeweils ein Teil des Gesamtsystems zu erstellen. Dazu in der Anforderungsanalyse mehr.
+
 ___
 ### __Anforderungsanalyse__  
 
@@ -22,6 +23,8 @@ IDE: IntelliJ
 Build-Tool: Maven  
 Test: JUnit  
 Deployment: Docker
+
+Zu jeder Lösung muss es jeweils einen funktionalen Test und einen performance Test geben.
 
 Beachten der nicht-Funktionalen Anforderungen:
 1.  Hygiene des Git-Repositories
@@ -39,6 +42,8 @@ Beachten der nicht-Funktionalen Anforderungen:
 4.  Docker und Docker-Compose
 
     Die Software wird containerisiert und läuft in Docker Version 19.03 sowie mit Docker-Compose Version 1.24. Das Docker-Compse File ist in Version 3.7 geschrieben.
+
+
 ___
 __Zu Aufgabe 2 UDP Sockets__  
 Die Sensoren erfassen jeweils folgende Werte: Füllstand des Tanks, Kilometerstand, Verkehrssituation und Durschnittsgeschwindigkeit. Diese werden zufällig in einem bestimmten Bereich z.B Verkehrssituation (frei, mäßiger Verrkehr, starker Verkehr, Stau), generiert. Jeder Sensor wird als eigenständiger Prozess bzw. als Container gestartet. Die Werte werden periodisch an den Zentralserver gesendet. Desweiteren werden noch die IP, Port sowie Typ des Sensors and die Zentrale verschickt und dort in der Konsole ausgeben. Die Kommunikation läuft über UDP - Socket und ist unidirektional.  
