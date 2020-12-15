@@ -19,8 +19,15 @@ ___
 
 Festlegung der Meilensteine:
 1. Meilenstein (15.12.2020): Aufgabe 1 und 2. Lauffähig, Protokolliert und getestet.
+
+    System: 
+            - Vier Sensoren(Clients/Prozesse) die mittels UPD Socket mit dem Zentralserver kommunizieren:
+                - Sensorwerte ändern sich ständig
+                - Nachrichtenformat: JSON
+
+
 2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und getestet.
-3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet.
+3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet. Projektabschluss!
 
 Programmiersprache: Java  
 IDE: IntelliJ  
