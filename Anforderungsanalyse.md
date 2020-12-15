@@ -12,7 +12,7 @@ Abbildung 1 zeigt eine grobe Übersicht des Systems welches vorgegeben wurde.
 
 ![Alt-Text](/Abbildung1.png)
 
-Abbildung 1 - Vorgegebens Systemdesign
+_Abbildung 1 - Vorgegebenes Systemdesign_
 ___
 ### Systeme
 - Vier Sensoren(Clients)
