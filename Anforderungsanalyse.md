@@ -141,8 +141,8 @@ ___
 
 __Status__
 
-- [ ] Aufgabe Projektplan
-- [ ] Aufgabe UDP TCP HTPP
+- [x] Aufgabe Projektplan
+- [x] Aufgabe UDP TCP HTPP
 - [ ] Aufgabe RPC
 - [ ] Aufgabe MoM mittels MQTT
 - [ ] Aufgabe Hochverfügbarkeit und Konsistenz
