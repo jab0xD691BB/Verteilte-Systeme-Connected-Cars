@@ -124,8 +124,6 @@ Es wird getestet, dass der Sensor die Werte schnell genug erzeugt und die auch i
 Gestoppt wird hierbei die Zeit vom begin der Erzeugung der Daten über die Konvertierung als JSON Objekt bishin zum abschicken über das Socket.
 Diese gemessene Zeit sollte kleiner sein als die Zeit, die die Anforderung vorgibt immer Daten abzuschicken. In dem Fall zwei Sekunden. 
 
-Bei unserem Test ist das längste was Dauert 25 ms. 
-
 ___
 
 __Protokoll - Testverfahren zu Aufgabe 3__  
