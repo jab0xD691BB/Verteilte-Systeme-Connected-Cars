@@ -105,22 +105,6 @@ Beachten der nicht-Funktionalen Anforderungen:
 
 
 ___
-__Zu Aufgabe 2 UDP Sockets__  
-Die Sensoren erfassen jeweils folgende Werte: Füllstand des Tanks, Kilometerstand, Verkehrssituation und Durschnittsgeschwindigkeit. Diese werden zufällig in einem bestimmten Bereich z.B Verkehrssituation (frei, mäßiger Verrkehr, starker Verkehr, Stau), generiert. Jeder Sensor wird als eigenständiger Prozess bzw. als Container gestartet. Die Werte werden periodisch an den Zentralserver gesendet. Desweiteren werden noch die IP, Port sowie Typ des Sensors and die Zentrale verschickt und dort in der Konsole ausgeben. Die Kommunikation läuft über UDP - Socket und ist unidirektional.  
-
-Der String, der Übertragen wird, sieht wie folgt aus: < IP-Adresse : Port : Sensorname : XY Wert >.
-
-Funktionale Tests:  
-Werden die Werte richtig übertragen?
-Werden die Daten richtig decodiert?
-
-Nicht-Funktionale Tests:  
-Wartbarkeit:   
-Programmier Konventionen z.B Google Style Guide  
-Testbarkeit:  
-
-
-___
 __Protokoll - Testverfahren zu Aufgabe 2__  
 
 Funktionaler Test:  
