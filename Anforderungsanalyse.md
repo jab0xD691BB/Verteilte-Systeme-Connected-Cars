@@ -2,7 +2,7 @@
 
 ### Allgemein
 
-In einem Auto(Subsystem) befinden sich vier Sensoren(Clients) und eine Zentrale die als Server ihre Aufgabe leistet. Die Sensoren versorgen im Sekundentakt die Zentrale mit Daten, welche über UDP übertragen werden.
+In einem Auto(Subsystem) befinden sich vier Sensoren(Clients) und eine Zentrale die als Server ihre Aufgabe leistet. Die Sensoren versorgen im zwei Sekundentakt die Zentrale mit Daten, welche über UDP übertragen werden.
 Dort werden die Nachrichten unter Angabe von IP, Port und Typ des Sensors auf der Standardausgabe ausgegeben.
 
 Die Zentrale dient ebenfalls als ein HTTP-Server, damit man über ein Webbrowser, die Daten der Sensoren verfolgen kann. Die Kommunikation geschieht über TCP-HTTP (Socket).  
@@ -25,6 +25,8 @@ Festlegung der Meilensteine:
             - Vier Sensoren(Clients/Prozesse) die mittels UPD Socket mit dem Zentralserver kommunizieren:
 
                 - Sensorwerte ändern sich ständig
+
+                - Übertragung alle zwei Sekunden
                 
                 - Nachrichtenformat: JSON
 
@@ -32,8 +34,10 @@ Festlegung der Meilensteine:
             - Eine Zentrale(Server/Prozess) dient als UDP-Server und HTTP-Server:
 
                 - Empfängt von Sensoren Nachrichten (per UDP Socket) die mit Angabe von IP, Port und Typ des Sensors auf der Standardausgabe ausgegeben werden. Diese werden zusätzlich in einer einfachen Form abgespeichert.
+
+                - Sensorwerte werden langfristig abgespeichert um Sensordaten jederzeit abrufen zu können.
                 
-                - HTTP-Server mit HTTP GET, der über REST-API zugriff auf einzelne Sensordaten bietet. 
+                - Ebenfalls dient der Server als HTTP-Schnittstelle mit HTTP GET, der über REST-API zugriff auf einzelne Sensordaten bietet, die abgespeichert vorliegen. 
 
 2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und getestet.
 3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet. Projektabschluss!
