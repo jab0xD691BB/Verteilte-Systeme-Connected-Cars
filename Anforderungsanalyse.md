@@ -29,6 +29,12 @@ Festlegung der Meilensteine:
                 - Nachrichtenformat: JSON
 
 
+            - Eine Zentrale(Server/Prozess) dient als UDP-Server und HTTP-Server:
+
+                - Empfängt von Sensoren Nachrichten (per UDP Socket) die mit Angabe von IP, Port und Typ des Sensors auf der Standardausgabe ausgegeben werden. Diese werden zusätzlich in einer einfachen Form abgespeichert.
+                
+                - HTTP-Server mit HTTP GET, der über REST-API zugriff auf einzelne Sensordaten bietet. 
+
 2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und getestet.
 3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet. Projektabschluss!
 
