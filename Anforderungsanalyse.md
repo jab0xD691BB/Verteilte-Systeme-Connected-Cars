@@ -13,16 +13,14 @@ Abbildung 1 zeigt eine grobe Übersicht des Systems welches vorgegeben wurde.
 ![Alt-Text](/Abbildung1.png)
 
 _Abbildung 1 - Vorgegebenes Systemdesign_
-___
-### Systeme
-- Vier Sensoren(Clients)
-- Eine Zentrale (UDP-Server, HTTP-Server)
-- Anbindung eines Service-Providers mittels einer RPC(Thrift)
-- externe Geräte (Webbrowser)
-Dazu ist in mehreren Phasen(Meilensteine) jeweils ein Teil des Gesamtsystems zu erstellen. Dazu in der Anforderungsanalyse mehr.
 
 ___
 ### __Anforderungsanalyse__  
+
+Festlegung der Meilensteine:
+1. Meilenstein (15.12.2020): Aufgabe 1 und 2. Lauffähig, Protokolliert und getestet.
+2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und getestet.
+3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet.
 
 Programmiersprache: Java  
 IDE: IntelliJ  
