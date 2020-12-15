@@ -107,10 +107,17 @@ Beachten der nicht-Funktionalen Anforderungen:
 ___
 __Protokoll - Testverfahren zu Aufgabe 2__  
 
-Funktionaler Test:  
-Es wird die Kommunikation zwischen dem Clienten und dem Server getestet. 
 
-nicht Funktionaler Test:    
+Funktionaler Test:  
+Es wird die Formatierung von einem String in ein JSON Format getestet. Dazu wird ein JSONDummyObject erzeugt der die selben Daten wie der String enthält und der String wird in die Send Funktion übergeben, wo dann ein JSONObject aus dem String zurück gibt. Im anschlusss wird das DummyObject mit dem erzeugten Object verglichen.
+
+
+
+nicht Funktionaler Test:
+Es wird die Stabilität des Clients und des Server durch ein Stresstest überprüft.
+Dazu erzeugt der Client 5000 Werte und sendet diese an den Server. Der Server muss diese empfangen und verarbeiten können. Client und Server dürfen nicht abstürzen.
+
+
 
 Performance Test:
 Es wird getestet, dass der Sensor die Werte schnell genug erzeugt und die auch in der vorgegenen Zeit vorbereitet und abschickt.
