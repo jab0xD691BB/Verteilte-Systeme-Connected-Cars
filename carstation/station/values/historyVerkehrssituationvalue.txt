@@ -1,0 +1,31 @@
+2021-01-01 03:24:43.857 frei
+2021-01-01 03:24:45.859 m��iger Verkehr
+2021-01-01 03:24:47.859 m��iger Verkehr
+2021-01-01 03:24:49.859 m��iger Verkehr
+2021-01-01 03:24:51.859 m��iger Verkehr
+2021-01-01 03:24:53.86 starker Verkehr
+2021-01-01 03:24:55.86 m��iger Verkehr
+2021-01-01 03:24:57.861 frei
+2021-01-01 03:24:59.861 frei
+2021-01-01 03:25:01.862 starker Verkehr
+2021-01-01 03:25:03.863 starker Verkehr
+2021-01-01 03:25:05.864 m��iger Verkehr
+2021-01-01 03:25:07.865 m��iger Verkehr
+2021-01-01 03:25:09.865 m��iger Verkehr
+2021-01-01 03:25:11.866 starker Verkehr
+2021-01-01 03:25:13.866 frei
+2021-01-01 03:25:15.867 starker Verkehr
+2021-01-01 03:25:17.867 frei
+2021-01-01 03:25:19.869 frei
+2021-01-01 03:25:21.869 frei
+2021-01-01 03:25:23.87 starker Verkehr
+2021-01-01 03:25:25.872 starker Verkehr
+2021-01-01 03:25:27.874 m��iger Verkehr
+2021-01-01 03:25:29.874 m��iger Verkehr
+2021-01-01 03:25:31.874 starker Verkehr
+2021-01-01 03:25:33.876 m��iger Verkehr
+2021-01-01 03:25:35.877 m��iger Verkehr
+2021-01-01 03:25:37.877 starker Verkehr
+2021-01-01 03:25:39.877 starker Verkehr
+2021-01-01 03:25:41.878 starker Verkehr
+2021-01-01 03:25:43.878 frei

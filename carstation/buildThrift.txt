@@ -1,0 +1,3 @@
+thrift-0.13.0.exe -gen java -out station/src/main/java carapi.thrift
+
+thrift-0.13.0.exe -gen java -out thrift/src/main/java carapi.thrift

@@ -7,13 +7,17 @@ import org.json.JSONObject;
 public class main {
 
   public static void main(String[] args) throws SocketException {
+
+
     Sensor s = null;
     int testFlag = 0;
 
     try {
+      Thread.sleep((long)(Math.random() * 1000)); //prevent spamming?
+
       s = new Sensor(args[0], args[1], args[2]);
 
-    } catch (ArrayIndexOutOfBoundsException e) {
+    } catch (ArrayIndexOutOfBoundsException | InterruptedException e) {
       //sensorTyp = "Tank";
       //sensorIp = "127.0.0.1";
       //sensorPort = "9876";

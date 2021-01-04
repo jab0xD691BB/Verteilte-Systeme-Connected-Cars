@@ -1,0 +1,1 @@
+java -jar /usr/app/thrift-1.0-SNAPSHOT.jar

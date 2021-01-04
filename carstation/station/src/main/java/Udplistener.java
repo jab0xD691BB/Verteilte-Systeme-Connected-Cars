@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
@@ -20,22 +21,23 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import org.json.*;
 
-
-
 public class Udplistener implements Runnable {
 
   private DatagramSocket serverSocket;
   private int port;
-  private boolean running = true;
+  public boolean running = true;
 
   private Map<String, Timestamp> activeSensor;
   private Set<String> sensorActive;
+
+  public Map<String, String> currentValues;
 
   public Udplistener(int port) throws SocketException {
     this.port = port;
     serverSocket = new DatagramSocket(port);
     activeSensor = new HashMap<>();
     sensorActive = new HashSet<>();
+    currentValues = new HashMap<>();
   }
 
 
@@ -67,6 +69,11 @@ public class Udplistener implements Runnable {
 
         System.out.println("receive: " + r);
 
+        //fill map rdy to send
+        currentValues.put(styp, svalue);
+
+
+        //persist in txt file
         activeSensor.put(styp, new Timestamp(System.currentTimeMillis()));
         sensorActive.add(styp);
         processReceivedData(styp, svalue);
