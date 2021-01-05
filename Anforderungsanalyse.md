@@ -146,6 +146,9 @@ ___
 
 __Protokoll - Testverfahren zu Aufgabe 4__  
 
+
+(Tests aus aufgabe 2 übernehmen und verbessern ? )
+
 Funktionaler Test:  
 
 
