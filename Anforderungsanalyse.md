@@ -10,7 +10,7 @@ Später werden die Sensordaten vom Zentralserver, an einen Service Provider übe
 
 Abbildung 1 zeigt eine grobe Übersicht des Systems welches vorgegeben wurde.
 
-![Alt-Text](/Abbildung1.png)
+![Alt-Text](res/Abbildung1.png)
 
 _Abbildung 1 - Vorgegebenes Systemdesign_
 
@@ -46,7 +46,7 @@ Festlegung der Meilensteine:
                 - HTTP Kommunikation mit der Zentrale(Server) vom Browser aus.
 
 
-![Alt-Text](/abbildung2.png)
+![Alt-Text](res/Abbildung2.png)
 
 _Abbildung 2 - Systemdesign zum Meilenstein 1_
 
