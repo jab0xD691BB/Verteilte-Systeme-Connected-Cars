@@ -65,6 +65,8 @@ _Abbildung 2 - Systemdesign zum Meilenstein 1_
             - Designänderung im Bereich der Übertragung der Sensorwerte vom Clienten an den Server:
 
                 - Übertragung der Sensorwerte per MQTT an die Zentrale (Server).
+                - Die Sensoren publish die Messwerte, auf dem Topic "values/"Sensorname"", per MQTT an den Broker. Die Zentrale wiederum subscribe alle
+                  Sensoren Topics, um vom Broker Nachrichten zu empfangen.
 
 ![Alt-Text](res/Abbildung3.png)
 
