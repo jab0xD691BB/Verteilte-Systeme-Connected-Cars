@@ -93,6 +93,7 @@ __3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet
 - Die zwei Server tauschen unter Verwendung eines RPCs (Thrift oder Protobuf) untereinander die empfangenen Daten aus und speichern diese konsistent.
 
 - Um die Ausfallsicherheit zu testen fallen während des Betriebs immer wieder zu zufälligen einzeln die Server aus. (Simuliert).
+- Ausfallsimulationszenario: Händischer hart stopp des Servers über Docker.
 
 <!--![Alt-Text](res/Abbildung4.png)-->      
 
