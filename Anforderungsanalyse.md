@@ -95,9 +95,9 @@ __3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet
 - Um die Ausfallsicherheit zu testen fallen während des Betriebs immer wieder zu zufälligen einzeln die Server aus. (Simuliert).
 - Ausfallsimulationszenario: Händischer hart stopp des Servers über Docker.
 
-<!--![Alt-Text](res/Abbildung4.png)-->      
+--![Alt-Text](res/Abbildung4.png)     
 
-<!--_Abbildung 4 - Systemdesign zum Meilenstein 3_-->
+_Abbildung 4 - Systemdesign zum Meilenstein 3_
 
 ___
 <br/>
