@@ -66,6 +66,8 @@ _Abbildung 2 - Systemdesign zum Meilenstein 1_
 
                 - Übertragung der Sensorwerte per MQTT an die Zentrale (Server).
 
+![Alt-Text](res/Abbildung3.png)
+
 3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet. Projektabschluss!
 
     System: 
@@ -77,6 +79,8 @@ _Abbildung 2 - Systemdesign zum Meilenstein 1_
                 - Die zwei Server tauschen unter Verwendung eines RPCs (Thrift oder Protobuf) untereinander die empfangenen Daten aus und speichern diese konsistent.
 
                 - Um die Ausfallsicherheit zu testen fallen während des Betriebs immer wieder zu zufälligen einzeln die Server aus. (Simuliert).
+
+![Alt-Text](res/Abbildung4.png)                
 
 Programmiersprache: Java  
 IDE: IntelliJ  
