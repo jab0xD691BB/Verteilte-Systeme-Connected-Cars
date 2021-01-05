@@ -62,6 +62,11 @@ _Abbildung 2 - Systemdesign zum Meilenstein 1_
 
                 - Anbieter speichert die übermittelten Daten persistent.
 
+                - Die Thrift aka IDL(Interface Description Language) beinhaltet ein Service
+                  sendCurrent(1: map<string, string> cv) die für den Client und Server als Schnittstelle dient.
+                  Der Client(Zentrale) speichert die aktuellen Messwerte in einer HashMap und verschickt sie über die Funktion sendCurrent(currentValues) und Port 9090 an den Server.
+                  Der Server(Cloud des Dienstanbieters) empfängt die Daten und persistiert die aktuellen Messwerte der Sensoren in einer Text datei ("currentSensornameValues.txt").
+
             - Designänderung im Bereich der Übertragung der Sensorwerte vom Clienten an den Server:
 
                 - Übertragung der Sensorwerte per MQTT an die Zentrale (Server).
