@@ -18,7 +18,7 @@ ___
 ### __Anforderungsanalyse__  
 <br/>
 
-__Festlegung der Meilensteine:__
+__Festlegung der Meilensteine:__  
 __1. Meilenstein (15.12.2020): Aufgabe 1 und 2. Lauffähig, Protokolliert und getestet.__
 
 - Vier Sensoren(Clients/Prozesse) die mittels UPD Socket mit dem Zentralserver kommunizieren:
