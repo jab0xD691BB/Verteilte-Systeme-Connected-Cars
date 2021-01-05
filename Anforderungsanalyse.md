@@ -188,7 +188,7 @@ __Protokoll - Testverfahren zu Aufgabe 5__
 
 Funktionaler Test:  Serverausfall simulieren und prüfen ob daten persistent sind, indem alle daten ausgegeben werden.
 
-nicht Funktionaler Test:    ?
+nicht Funktionaler Test:  Serverausfall simulieren und prüfen ob Service weiterläuft.
 
 Performance Test: Server für circa 1 minute ausfallen lassen und versuchen Daten zu synchroniseren
 ___
