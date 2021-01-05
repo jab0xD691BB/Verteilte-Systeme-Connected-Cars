@@ -65,9 +65,12 @@ _Abbildung 2 - Systemdesign zum Meilenstein 1_
             - Designänderung im Bereich der Übertragung der Sensorwerte vom Clienten an den Server:
 
                 - Übertragung der Sensorwerte per MQTT an die Zentrale (Server).
+                
                 - Die Sensoren publish die Messwerte, auf dem Topic "values/"Sensorname"", per MQTT an den Broker(mosquitto). Die Zentrale wiederum          subscribe alle Sensoren Topics, um vom Broker Nachrichten zu empfangen.
 
 ![Alt-Text](res/Abbildung3.png)
+
+_Abbildung 3 - Systemdesign zum Meilenstein 2_
 
 3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet. Projektabschluss!
 
@@ -81,7 +84,9 @@ _Abbildung 2 - Systemdesign zum Meilenstein 1_
 
                 - Um die Ausfallsicherheit zu testen fallen während des Betriebs immer wieder zu zufälligen einzeln die Server aus. (Simuliert).
 
-![Alt-Text](res/Abbildung4.png)                
+![Alt-Text](res/Abbildung4.png)      
+
+_Abbildung 4 - Systemdesign zum Meilenstein 3_
 
 Programmiersprache: Java  
 IDE: IntelliJ  
