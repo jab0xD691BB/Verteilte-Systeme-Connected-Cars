@@ -150,6 +150,7 @@ Gestoppt wird hierbei die Zeit vom begin der Erzeugung der Daten über die Konve
 Diese gemessene Zeit sollte kleiner sein als die Zeit, die die Anforderung vorgibt immer Daten abzuschicken. In dem Fall zwei Sekunden. 
 
 ___
+<br/>
 
 __Protokoll - Testverfahren zu Aufgabe 3__  
 
@@ -164,6 +165,7 @@ Speicherung einer Test File die vom Thrift kommt (eine Map mit zwei Strings) mit
 Performance Test:
 
 ___
+<br/>
 
 __Protokoll - Testverfahren zu Aufgabe 4__  
 
@@ -179,6 +181,7 @@ nicht Funktionaler Test:
 Performance Test:
 
 ___
+<br/>
 
 __Protokoll - Testverfahren zu Aufgabe 5__  
 
@@ -189,6 +192,7 @@ nicht Funktionaler Test:
 Performance Test:
 
 ___
+<br/>
 
 __Status__
 
