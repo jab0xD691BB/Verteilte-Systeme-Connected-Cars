@@ -22,9 +22,12 @@ public class main {
 
     String tContainerIp = args[0];
 
+
     //udp listener
     try {
       udplistener = new Udplistener(9876);
+      udplistener.setBrokerIp(args[1]);
+
       Thread ta = new Thread(udplistener);
       ta.start();
 

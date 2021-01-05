@@ -19,9 +19,14 @@ import java.util.TimerTask;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.*;
 
-public class Udplistener implements Runnable {
+public class Udplistener implements Runnable, MqttCallback {
 
   private DatagramSocket serverSocket;
   private int port;
@@ -31,6 +36,8 @@ public class Udplistener implements Runnable {
   private Set<String> sensorActive;
 
   public Map<String, String> currentValues;
+
+  private String brokerIp = "127.0.0.1";
 
   public Udplistener(int port) throws SocketException {
     this.port = port;
@@ -52,7 +59,7 @@ public class Udplistener implements Runnable {
       }
     }, 0, 1000);
 
-    while (running) {
+    /*while (running) {
 
       byte[] receiveData = new byte[1024];
       DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
@@ -83,7 +90,23 @@ public class Udplistener implements Runnable {
         running = false;
       }
 
+    }*/
+
+    try {
+      MqttClient client = new MqttClient("tcp://" + brokerIp + ":1883", MqttClient.generateClientId());
+      client.setCallback(this);
+
+      client.connect();
+      String[] topics = {"values/Tank", "values/Kilometerstand", "values/Verkehrssituation",
+          "values/avgSpeed"};
+      for(String topic : topics){
+        client.subscribe(topic);
+      }
+
+    } catch (MqttException e) {
+      e.printStackTrace();
     }
+
   }
 
   private void processReceivedData(String sensorType, String sensorValue) {
@@ -132,6 +155,40 @@ public class Udplistener implements Runnable {
     } catch (IOException e) {
       e.printStackTrace();
     }
+
+  }
+
+  public void setBrokerIp(String brokerIp) {
+    this.brokerIp = brokerIp;
+  }
+
+  @Override
+  public void connectionLost(Throwable throwable) {
+
+  }
+
+  @Override
+  public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
+    System.out.println(new String(mqttMessage.getPayload()));
+
+    String jsonMsg = new String(mqttMessage.getPayload());
+
+    JSONObject jsonObject = new JSONObject(jsonMsg);
+
+    String styp = jsonObject.getString("sensorType");
+    String svalue = jsonObject.getString("sensorValue");
+
+    //fill map rdy to send
+    currentValues.put(styp, svalue);
+
+    //persist in txt file
+    activeSensor.put(styp, new Timestamp(System.currentTimeMillis()));
+    sensorActive.add(styp);
+    processReceivedData(styp, svalue);
+  }
+
+  @Override
+  public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
 
   }
 }

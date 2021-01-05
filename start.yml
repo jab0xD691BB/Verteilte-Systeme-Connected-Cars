@@ -1,43 +1,49 @@
 version: '3.7'
 services:
   sensor-tank:
+    container_name: sensor-tank
     build:
       context: ./carstation/sensor
       dockerfile: Dockerfile
     environment:
       - sensorname=Tank
-      - sensorip=station
+      - sensorip=mosquitto
       - sensorport=9876
   sensor-kilometerstand:
+    container_name: sensor-kilometerstand
     build:
       context: ./carstation/sensor
       dockerfile: Dockerfile
     environment:
       - sensorname=Kilometerstand
-      - sensorip=station
+      - sensorip=mosquitto
       - sensorport=9876
   sensor-verkehrssituation:
+    container_name: sensor-verkehrssituation
     build:
       context: ./carstation/sensor
       dockerfile: Dockerfile
     environment:
       - sensorname=Verkehrssituation
-      - sensorip=station
+      - sensorip=mosquitto
       - sensorport=9876
   sensor-avgspeed:
+    container_name: sensor-avgspeed
     build:
       context: ./carstation/sensor
       dockerfile: Dockerfile
     environment:
       - sensorname=avgSpeed
-      - sensorip=station
+      - sensorip=mosquitto
       - sensorport=9876
   station:
+    container_name: station
     build:
       context: ./carstation/station
       dockerfile: Dockerfile
     environment:
       - thriftcontainerip=thrift-server
+      - brokercontainerip=mosquitto
     ports:
         - 9876:9876/udp
         - 9877:9877/udp
@@ -45,9 +51,20 @@ services:
         - 9879:9879/udp
         - 3124:3124/tcp
   thrift-server:
+    container_name: thriftServer
     build:
       context: ./carstation/thrift
       dockerfile: Dockerfile
     ports:
         - 9090:9090/tcp
+  mosquitto:
+    image: "eclipse-mosquitto"
+    container_name: "mosquitto"
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - /carstation/mqtt/broker/mosquitto/config/mosquitto.config:/mosquitto/config/mosquitto.config
+    restart: always
+
     

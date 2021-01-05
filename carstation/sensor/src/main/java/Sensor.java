@@ -6,6 +6,10 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.sql.Timestamp;
 import java.util.Random;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONObject;
 
 public class Sensor {
@@ -26,7 +30,7 @@ public class Sensor {
 
   }
 
-  public String generateValue(){
+  public String generateValue() {
     Random rand = new Random();
 
     if ("Tank".equals(sensorType)) {
@@ -47,30 +51,40 @@ public class Sensor {
   public void sendValue() throws IOException {
     generateValue();
 
-   /* StringBuilder jsonFormat = new StringBuilder(); "" fehlt bei den werten
-    jsonFormat.append("{")
-        .append("sensorType").append(":").append(sensorType).append(",")
-        .append("sensorIp").append(":").append(sensorIp).append(",")
-        .append("sensorPort").append(":").append(sensorPort).append(",")
-        .append("sensorValue").append(":").append(sensorValue)
-        .append("}");
-    */
-
     JSONObject jsonObject = new JSONObject();
     jsonObject.put("sensorType", sensorType);
     jsonObject.put("sensorIp", sensorIp);
     jsonObject.put("sensorPort", sensorPort);
     jsonObject.put("sensorValue", sensorValue);
 
-    System.out.println("Send: " + jsonObject.toString());
 
+    /*
     byte[] sendData = new byte[1024];
     sendData = jsonObject.toString().getBytes();
 
     InetAddress addr = InetAddress.getByName(sensorIp);
 
     DatagramPacket dp = new DatagramPacket(sendData, sendData.length, addr, Integer.parseInt(sensorPort));
-    clientSocket.send(dp);
+    clientSocket.send(dp);*/
+    try {
+      MqttClient client = new MqttClient("tcp://" + sensorIp + ":1883", MqttClient.generateClientId());
+      MqttConnectOptions options = new MqttConnectOptions();
+      options.setCleanSession(true);
+
+      client.connect(options);
+
+      MqttMessage message = new MqttMessage(jsonObject.toString().getBytes());
+      message.setQos(1);
+
+      client.publish("values/" + sensorType, message);
+      System.out.println("Send: " + jsonObject.toString());
+
+      client.disconnect();
+
+    } catch (MqttException e) {
+      e.printStackTrace();
+    }
+
 
   }
 
@@ -82,7 +96,6 @@ public class Sensor {
     jsonObject.put("sensorPort", "9876");
     jsonObject.put("sensorValue", "15");
 
-
     System.out.println("Send: " + jsonObject.toString());
 
     byte[] sendData = new byte[1024];
@@ -90,7 +103,8 @@ public class Sensor {
 
     InetAddress addr = InetAddress.getByName(sensorIp);
 
-    DatagramPacket dp = new DatagramPacket(sendData, sendData.length, addr, Integer.parseInt(sensorPort));
+    DatagramPacket dp = new DatagramPacket(sendData, sendData.length, addr,
+        Integer.parseInt(sensorPort));
     clientSocket.send(dp);
 
     return jsonObject;
