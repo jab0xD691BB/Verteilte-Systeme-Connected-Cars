@@ -16,83 +16,90 @@ _Abbildung 1 - Vorgegebenes Systemdesign_
 
 ___
 ### __Anforderungsanalyse__  
+<br/>
 
-Festlegung der Meilensteine:
-1. Meilenstein (15.12.2020): Aufgabe 1 und 2. Lauffähig, Protokolliert und getestet.
+__Festlegung der Meilensteine:__
+__1. Meilenstein (15.12.2020): Aufgabe 1 und 2. Lauffähig, Protokolliert und getestet.__
 
-    System: 
+- Vier Sensoren(Clients/Prozesse) die mittels UPD Socket mit dem Zentralserver kommunizieren:
 
-            - Vier Sensoren(Clients/Prozesse) die mittels UPD Socket mit dem Zentralserver kommunizieren:
+- Tanksensor;Kilometerstand;Verkehrssituation;Durschnittsgeschwindigkeit
 
-                - Tanksensor;Kilometerstand;Verkehrssituation;Durschnittsgeschwindigkeit
+- Sensorwerte ändern sich ständig
 
-                - Sensorwerte ändern sich ständig
-
-                - Übertragung alle zwei Sekunden
+- Übertragung alle zwei Sekunden
                 
-                - Nachrichtenformat: JSON
+- Nachrichtenformat: JSON
 
 
-            - Eine Zentrale(Server/Prozess) dient als UDP-Server und HTTP-Server:
+- Eine Zentrale(Server/Prozess) dient als UDP-Server und HTTP-Server:
 
-                - Empfängt von Sensoren Nachrichten (per UDP Socket) die mit Angabe von IP, Port und Typ des Sensors auf der Standardausgabe ausgegeben werden. Diese werden zusätzlich in einer einfachen Form abgespeichert.
+- Empfängt von Sensoren Nachrichten (per UDP Socket) die mit Angabe von IP, Port und Typ des Sensors auf der Standardausgabe ausgegeben werden. Diese werden zusätzlich in einer einfachen Form abgespeichert.
 
-                - Sensorwerte werden langfristig abgespeichert um Sensordaten jederzeit abrufen zu können.
+- Sensorwerte werden langfristig abgespeichert um Sensordaten jederzeit abrufen zu können.
                 
-                - Ebenfalls dient der Server als HTTP-Schnittstelle mit HTTP GET, der über REST-API zugriff auf einzelne Sensordaten bietet, die abgespeichert vorliegen. 
+- Ebenfalls dient der Server als HTTP-Schnittstelle mit HTTP GET, der über REST-API zugriff auf einzelne Sensordaten bietet, die abgespeichert vorliegen. 
 
-            - Sensordaten abrufbar über eine URI ( bsp. http://127.0.0.1:3124/values/historyTankvalue, http://127.0.0.1:3124/values/currentTankvalue):
+- Sensordaten abrufbar über eine URI ( bsp. http://127.0.0.1:3124/values/historyTankvalue, http://127.0.0.1:3124/values/currentTankvalue):
 
-                - HTTP Kommunikation mit der Zentrale(Server) vom Browser aus.
+- HTTP Kommunikation mit der Zentrale(Server) vom Browser aus.
 
+<br/>
 
 ![Alt-Text](res/Abbildung2.png)
 
 _Abbildung 2 - Systemdesign zum Meilenstein 1_
 
-2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und getestet.
+___
+<br/>
 
-    System: 
+__2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und getestet.__
 
-            - Zentrale sendet die aktuellen Werte der Sensoren, über einen RPC (Thrift) an die Cloud eines Dienstanbieters:
+- Zentrale sendet die aktuellen Werte der Sensoren, über einen RPC (Thrift) an die Cloud eines Dienstanbieters:
 
-                - Dienstanbierter erzeugen (Service Provider).
+- Dienstanbierter erzeugen (Service Provider).
 
-                - Thrift-Datei beschriebene API am Server (Server des Anbieters) als auch am Client (Zentrale) implementiert.
+- Thrift-Datei beschriebene API am Server (Server des Anbieters) als auch am Client (Zentrale) implementiert.
 
-                - Anbieter speichert die übermittelten Daten persistent.
+- Anbieter speichert die übermittelten Daten persistent.
 
-                - Die Thrift aka IDL(Interface Description Language) beinhaltet ein Service
-                  sendCurrent(1: map<string, string> cv) die für den Client und Server als Schnittstelle dient.
-                  Der Client(Zentrale) speichert die aktuellen Messwerte in einer HashMap und verschickt sie über die Funktion sendCurrent(currentValues) und Port 9090 an den Server.
-                  Der Server(Cloud des Dienstanbieters) empfängt die Daten über die sendCurrent(1: map<string, string cv>) Funktion und persistiert die aktuellen Messwerte der Sensoren in einer Text datei ("currentSensornameValues.txt").
+- Die Thrift aka IDL(Interface Description Language) beinhaltet ein Service
+  sendCurrent(1: map<string, string> cv) die für den Client und Server als Schnittstelle dient.
+  Der Client(Zentrale) speichert die aktuellen Messwerte in einer HashMap und verschickt sie über die Funktion sendCurrent(currentValues) und Port 9090 an den Server.
+  Der Server(Cloud des Dienstanbieters) empfängt die Daten über die sendCurrent(1: map<string, string cv>) Funktion und persistiert die aktuellen Messwerte der Sensoren in einer Text datei ("currentSensornameValues.txt").
 
-            - Designänderung im Bereich der Übertragung der Sensorwerte vom Clienten an den Server:
+- Designänderung im Bereich der Übertragung der Sensorwerte vom Clienten an den Server:
 
-                - Übertragung der Sensorwerte per MQTT an die Zentrale (Server).
+- Übertragung der Sensorwerte per MQTT an die Zentrale (Server).
                 
-                - Die Sensoren publish die Messwerte, auf dem Topic "values/"Sensorname"", per MQTT an den Broker(mosquitto). 
-                  Die Zentrale wiederum subscribe alle Sensoren Topics, um vom Broker Nachrichten zu empfangen.
+- Die Sensoren publish die Messwerte, auf dem Topic "values/"Sensorname"", per MQTT an den Broker(mosquitto). 
+  Die Zentrale wiederum subscribe alle Sensoren Topics, um vom Broker Nachrichten zu empfangen.
+
+<br/>
 
 ![Alt-Text](res/Abbildung3.png)
 
 _Abbildung 3 - Systemdesign zum Meilenstein 2_
 
-3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet. Projektabschluss!
+___ 
+<br/> 
+  
+__3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet. Projektabschluss!__
 
-    System: 
+- Server des Service Providers Redundant auslegen:
 
-            - Server des Service Providers Redundant auslegen:
+- Auslegen der Daten auf zwei Server parallel in einer Primary-Secondary Architektur im Hot-Standby Betrieb.
 
-                - Auslegen der Daten auf zwei Server parallel in einer Primary-Secondary Architektur im Hot-Standby Betrieb.
+- Die zwei Server tauschen unter Verwendung eines RPCs (Thrift oder Protobuf) untereinander die empfangenen Daten aus und speichern diese konsistent.
 
-                - Die zwei Server tauschen unter Verwendung eines RPCs (Thrift oder Protobuf) untereinander die empfangenen Daten aus und speichern diese konsistent.
+- Um die Ausfallsicherheit zu testen fallen während des Betriebs immer wieder zu zufälligen einzeln die Server aus. (Simuliert).
 
-                - Um die Ausfallsicherheit zu testen fallen während des Betriebs immer wieder zu zufälligen einzeln die Server aus. (Simuliert).
+<!--![Alt-Text](res/Abbildung4.png)-->      
 
-![Alt-Text](res/Abbildung4.png)      
+<!--_Abbildung 4 - Systemdesign zum Meilenstein 3_-->
 
-_Abbildung 4 - Systemdesign zum Meilenstein 3_
+___
+<br/>
 
 Programmiersprache: Java  
 IDE: IntelliJ  
@@ -121,6 +128,8 @@ Beachten der nicht-Funktionalen Anforderungen:
 
 
 ___
+<br/>
+
 __Protokoll - Testverfahren zu Aufgabe 2__  
 
 
