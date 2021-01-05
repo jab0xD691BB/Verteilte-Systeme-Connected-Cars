@@ -132,9 +132,13 @@ ___
 
 __Protokoll - Testverfahren zu Aufgabe 3__  
 
-Funktionaler Test:  
+Funktionaler Test:  (Qualität von Thrift)
 
-nicht Funktionaler Test:    
+Test ob die API funktioniert. (Thrift beschriebene Datei.)
+
+nicht Funktionaler Test:    (Persistens Test Serverseitig ausgehend von Thrift)
+
+Speicherung einer Test File die vom Thrift kommt (eine Map mit zwei Strings) mit einem testwort. Öffnen und Speicherung des Wortes in der Datei. Anschließend soll des gespeicherten Wort ausgelesen werden. Am ende wird verglichen ob das ausgelesene Wort aus der Datei, dass ausgangswort Wort im Buffer ist.
 
 Performance Test:
 
@@ -143,6 +147,8 @@ ___
 __Protokoll - Testverfahren zu Aufgabe 4__  
 
 Funktionaler Test:  
+
+
 
 nicht Funktionaler Test:    
 
