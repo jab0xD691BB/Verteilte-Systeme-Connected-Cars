@@ -101,7 +101,7 @@ Beachten der nicht-Funktionalen Anforderungen:
 
 3.  Lizenzen
 
-    Das Repository muss über ein Lizenz-File verfügen welches die Lizenz der Software ausweist.
+    Das Repository muss über ein Lizenz-File verfügen welches die Lizenz der Software ausweist. Für dieses Projekt wird die MIT License verwendet.
 
 4.  Docker und Docker-Compose
 
