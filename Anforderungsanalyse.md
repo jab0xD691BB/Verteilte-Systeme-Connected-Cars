@@ -175,11 +175,15 @@ __Protokoll - Testverfahren zu Aufgabe 4__
 
 Funktionaler Test:  
 
-
+Server gibt Empfangene nachrichten aus. 
 
 nicht Funktionaler Test:    
 
+Korrektheit der Nachrichten vergleichen. 
+
 Performance Test:
+
+Server mit Nachrichten bombadieren.
 
 ___
 <br/>
