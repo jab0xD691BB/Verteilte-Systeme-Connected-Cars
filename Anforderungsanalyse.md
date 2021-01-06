@@ -15,6 +15,34 @@ Abbildung 1 zeigt eine grobe Übersicht des Systems welches vorgegeben wurde.
 _Abbildung 1 - Vorgegebenes Systemdesign_
 
 ___
+<br/>
+
+Programmiersprache: Java  
+IDE: IntelliJ  
+Build-Tool: Maven  
+Test: Manuel (händisch)
+Deployment: Docker
+
+Zu jeder Aufgabenstellung (2-5) muss es jeweils einen Funktionalen, einen nicht Funktionalen und einen Performance Test geben. Diese werden weiter unten protokolliert. 
+
+Beachten der nicht-Funktionalen Anforderungen:
+1.  Hygiene des Git-Repositories
+
+    Um unerwünschte Dateien aus den Git-Repositories fern zu halten, erhält das Repository eine vernünftige .gitignore Datei. Diese sorgt dafür, dass z.B. Bibliotheken und Kompilate nicht in das Repository eingecheckt werden können.
+
+2.  Dokumentation
+
+    Die Software wird in einer README.md Datei dokumentiert. Diese Datei beinhaltet eine detaillierte Anleitung wie die Software kompiliert und mittels Docker und Docker-Compose gestartet und getestet werden kann.
+
+3.  Lizenzen
+
+    Das Repository muss über ein Lizenz-File verfügen welches die Lizenz der Software ausweist. Für dieses Projekt wird die MIT License verwendet.
+
+4.  Docker und Docker-Compose
+
+    Die Software wird containerisiert und läuft in Docker Version 19.03 sowie mit Docker-Compose Version 1.24. Das Docker-Compse File ist in Version 3.7 geschrieben.
+
+___
 ### __Anforderungsanalyse__  
 <br/>
 
@@ -104,34 +132,6 @@ __3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet
 ![Alt-Text](res/Abbildung4.png)     
 
 _Abbildung 4 - Systemdesign zum Meilenstein 3_
-
-___
-<br/>
-
-Programmiersprache: Java  
-IDE: IntelliJ  
-Build-Tool: Maven  
-Test: Manuel (händisch)
-Deployment: Docker
-
-Zu jeder Aufgabenstellung (2-5) muss es jeweils einen Funktionalen, einen nicht Funktionalen und einen Performance Test geben. Diese werden weiter unten protokolliert. 
-
-Beachten der nicht-Funktionalen Anforderungen:
-1.  Hygiene des Git-Repositories
-
-    Um unerwünschte Dateien aus den Git-Repositories fern zu halten, erhält das Repository eine vernünftige .gitignore Datei. Diese sorgt dafür, dass z.B. Bibliotheken und Kompilate nicht in das Repository eingecheckt werden können.
-
-2.  Dokumentation
-
-    Die Software wird in einer README.md Datei dokumentiert. Diese Datei beinhaltet eine detaillierte Anleitung wie die Software kompiliert und mittels Docker und Docker-Compose gestartet und getestet werden kann.
-
-3.  Lizenzen
-
-    Das Repository muss über ein Lizenz-File verfügen welches die Lizenz der Software ausweist. Für dieses Projekt wird die MIT License verwendet.
-
-4.  Docker und Docker-Compose
-
-    Die Software wird containerisiert und läuft in Docker Version 19.03 sowie mit Docker-Compose Version 1.24. Das Docker-Compse File ist in Version 3.7 geschrieben.
 
 
 ___
