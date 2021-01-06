@@ -44,6 +44,8 @@ __1. Meilenstein (15.12.2020): Aufgabe 1 und 2. Lauffähig, Protokolliert und ge
 
 - HTTP Kommunikation mit der Zentrale(Server) vom Browser aus.
 
+- Definierte Test implementiert und durch geführt.
+
 <br/>
 
 ![Alt-Text](res/Abbildung2.png)
@@ -75,6 +77,8 @@ __2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und ge
 - Die Sensoren publish die Messwerte, auf dem Topic "values/"Sensorname"", per MQTT an den Broker(mosquitto). 
   Die Zentrale wiederum subscribe alle Sensoren Topics, um vom Broker Nachrichten zu empfangen.
 
+- Definierte Test implementiert und durch geführt.
+
 <br/>
 
 ![Alt-Text](res/Abbildung3.png)
@@ -94,6 +98,8 @@ __3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet
 
 - Um die Ausfallsicherheit zu testen fallen während des Betriebs immer wieder zu zufälligen einzeln die Server aus. (Simuliert).
 - Ausfallsimulationszenario: Händischer hart stopp des Servers über Docker.
+
+- Definierte Test implementiert und durch geführt.
 
 ![Alt-Text](res/Abbildung4.png)     
 
@@ -157,14 +163,12 @@ __Protokoll - Testverfahren zu Aufgabe 3__
 
 Funktionaler Test:  (Qualität von Thrift)
 
-Vier Nachrichten verschicken und schauen ob diese Persistieren. 
-
+Vier Nachrichten verschicken und schauen ob diese korrekt Persistieren. 
 Test ob die API funktioniert. (Thrift beschriebene Datei.)
 
 nicht Funktionaler Test:    (Persistens Test Serverseitig ausgehend von Thrift)
 
 Korrektheit der IDL prüfen.
-
 Speicherung einer Test File die vom Thrift kommt (eine Map mit zwei Strings) mit einem testwort. Öffnen und Speicherung des Wortes in der Datei. Anschließend soll des gespeicherten Wort ausgelesen werden. Am ende wird verglichen ob das ausgelesene Wort aus der Datei, dass ausgangswort Wort im Buffer ist.
 
 Performance Test:
@@ -177,19 +181,18 @@ ___
 __Protokoll - Testverfahren zu Aufgabe 4__  
 
 
-(Tests aus aufgabe 2 übernehmen und verbessern ? )
-
 Funktionaler Test:  
 
-Server gibt Empfangene nachrichten aus. 
+Client gibt abgesendete Nachtichten auf der Console aus.
+Server gibt Empfangene Nachrichten aus, somit wissen wir, dass die Nachrichten abgesendet und angekommen sind.
 
 nicht Funktionaler Test:    
 
-Korrektheit der Nachrichten vergleichen. 
+Korrektheit der Nachrichten vergleichen. Wir verschicken Nachrichten an den Broker und schauen ob die am Subscriber korrekt ankommen. 
 
 Performance Test:
 
-Server mit Nachrichten bombadieren.
+Server mit Nachrichten pentrieren und schauen ob diese ankommen. Somit prüfen die Schnittstellen von MQTT (Broker etc.). 
 
 ___
 <br/>
