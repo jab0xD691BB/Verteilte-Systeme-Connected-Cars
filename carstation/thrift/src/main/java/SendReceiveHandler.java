@@ -12,18 +12,17 @@ public class SendReceiveHandler implements sendReceive.Iface{
   }
 
   public void ping() throws TException {
-
+    System.out.println("ping()");
   }
 
   @Override
   public void sendCurrent(Map<String, String> sv) throws TException {
     for(Map.Entry<String, String> entry : sv.entrySet()){
-      System.out.println( System.currentTimeMillis()+" SensorTyp: " + entry.getKey() + " - Sensorvalue: " + entry.getValue());
+      System.out.println( System.currentTimeMillis() + " SensorTyp: " + entry.getKey() + " - Sensorvalue: " + entry.getValue());
 
       try{
         FileWriter currWriter = new FileWriter(
             new File("current" + entry.getKey() + "value.txt"));
-
 
         currWriter.write(entry.getKey() + "\t" + entry.getValue() + "\n");
 
