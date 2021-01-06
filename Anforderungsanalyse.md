@@ -44,7 +44,7 @@ __1. Meilenstein (15.12.2020): Aufgabe 1 und 2. Lauffähig, Protokolliert und ge
 
 - HTTP Kommunikation mit der Zentrale(Server) vom Browser aus.
 
-- Definierte Test implementiert und durch geführt.
+- Definierte Tests implementiert und durch geführt.
 
 <br/>
 
@@ -77,7 +77,7 @@ __2. Meilenstein (15.01.2021): Aufgabe 3 und 4. Lauffähig, Protokolliert und ge
 - Die Sensoren publish die Messwerte, auf dem Topic "values/"Sensorname"", per MQTT an den Broker(mosquitto). 
   Die Zentrale wiederum subscribe alle Sensoren Topics, um vom Broker Nachrichten zu empfangen.
 
-- Definierte Test implementiert und durch geführt.
+- Definierte Tests implementiert und durch geführt.
 
 <br/>
 
@@ -99,7 +99,7 @@ __3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet
 - Um die Ausfallsicherheit zu testen fallen während des Betriebs immer wieder zu zufälligen einzeln die Server aus. (Simuliert).
 - Ausfallsimulationszenario: Händischer hart stopp des Servers über Docker.
 
-- Definierte Test implementiert und durch geführt.
+- Definierte Tests implementiert und durch geführt.
 
 ![Alt-Text](res/Abbildung4.png)     
 
