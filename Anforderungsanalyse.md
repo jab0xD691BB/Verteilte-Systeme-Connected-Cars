@@ -174,7 +174,7 @@ Speicherung einer Test File die vom Thrift kommt (eine Map mit zwei Strings) mit
 
 Performance Test:
 
-Thriftserver mit Nachrichrten (1000 stück) 90% Bombadieren und schauen ob diese Persistieren. 
+Thriftserver mit Nachrichrten (1000 stück in einer kurzen Zeit) Bombadieren und schauen ob diese zu 90 % Persistieren. Das heißt (900 Stück ankommen und gespeichert werden). 
 
 ___
 <br/>
