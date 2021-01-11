@@ -165,11 +165,12 @@ Funktionaler Test:  (Qualität von Thrift)
 
 Vier Nachrichten verschicken und schauen ob diese korrekt Persistieren. 
 Test ob die API funktioniert. (Thrift beschriebene Datei.)
+Datei wird erzeugt und Testwerte werden mit Timestamp abgespeichert.
 
 nicht Funktionaler Test:    (Persistens Test Serverseitig ausgehend von Thrift)
 
 Korrektheit der IDL prüfen.
-Speicherung einer Test File die vom Thrift kommt (eine Map mit zwei Strings) mit einem testwort. Öffnen und Speicherung des Wortes in der Datei. Anschließend soll des gespeicherten Wort ausgelesen werden. Am ende wird verglichen ob das ausgelesene Wort aus der Datei, dass ausgangswort Wort im Buffer ist.
+Speicherung einer Test File die vom Thrift kommt (eine Map mit zwei Strings) mit einem testwort. Öffnen und Speicherung des Wortes in der Datei. Anschließend soll des gespeicherten Wort ausgelesen werden. Am ende wird verglichen ob das ausgelesene Wort aus der Datei, dass ausgangswort unser erwartetes Ergebniss enthält. 0 1 2 3 in der Reihenfolge.
 
 Performance Test:
 
