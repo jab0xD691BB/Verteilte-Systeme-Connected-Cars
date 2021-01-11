@@ -212,6 +212,6 @@ __Status__
 
 - [x] Aufgabe Projektplan
 - [x] Aufgabe UDP TCP HTPP
-- [ ] Aufgabe RPC
+- [x] Aufgabe RPC
 - [ ] Aufgabe MoM mittels MQTT
 - [ ] Aufgabe Hochverfügbarkeit und Konsistenz
