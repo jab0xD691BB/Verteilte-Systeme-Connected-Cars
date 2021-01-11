@@ -9,10 +9,7 @@ import simpleServer.sendReceive;
 public class SendReceiveHandler implements sendReceive.Iface{
 
   public SendReceiveHandler() {
-  }
 
-  public void ping() throws TException {
-    System.out.println("ping()");
   }
 
   @Override
@@ -21,8 +18,7 @@ public class SendReceiveHandler implements sendReceive.Iface{
       System.out.println( System.currentTimeMillis() + " SensorTyp: " + entry.getKey() + " - Sensorvalue: " + entry.getValue());
 
       try{
-        FileWriter currWriter = new FileWriter(
-            new File("current" + entry.getKey() + "value.txt"));
+        FileWriter currWriter = new FileWriter(new File("current" + entry.getKey() + "value.txt"));
 
         currWriter.write(entry.getKey() + "\t" + entry.getValue() + "\n");
 
@@ -33,8 +29,8 @@ public class SendReceiveHandler implements sendReceive.Iface{
 
     }
 
-
   }
+
 
 
 }

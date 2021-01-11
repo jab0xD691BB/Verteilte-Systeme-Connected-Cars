@@ -57,7 +57,6 @@ public class Sensor {
     jsonObject.put("sensorPort", sensorPort);
     jsonObject.put("sensorValue", sensorValue);
 
-
     /*
     byte[] sendData = new byte[1024];
     sendData = jsonObject.toString().getBytes();
@@ -66,17 +65,22 @@ public class Sensor {
 
     DatagramPacket dp = new DatagramPacket(sendData, sendData.length, addr, Integer.parseInt(sensorPort));
     clientSocket.send(dp);*/
+
     try {
       MqttClient client = new MqttClient("tcp://" + sensorIp + ":1883", MqttClient.generateClientId());
+
       MqttConnectOptions options = new MqttConnectOptions();
+
       options.setCleanSession(true);
 
       client.connect(options);
 
       MqttMessage message = new MqttMessage(jsonObject.toString().getBytes());
+
       message.setQos(1);
 
       client.publish("values/" + sensorType, message);
+
       System.out.println("Send: " + jsonObject.toString());
 
       client.disconnect();
@@ -85,9 +89,9 @@ public class Sensor {
       e.printStackTrace();
     }
 
-
   }
 
+  //test function
   public JSONObject sendTest(String json) throws IOException {
     JSONObject jsonObject = new JSONObject(json);
 

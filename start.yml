@@ -64,7 +64,7 @@ services:
       - "1883:1883"
       - "9001:9001"
     volumes:
-      - /carstation/mqtt/broker/mosquitto/config/mosquitto.config:/mosquitto/config/mosquitto.config
+      - ./carstation/mqtt/broker/mosquitto.conf:/mosquitto/config/mosquitto.conf
     restart: always
 
     

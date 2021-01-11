@@ -14,14 +14,9 @@ public class main {
 
   public static void main(String[] args) throws UnsupportedEncodingException {
 
-    String path = main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-    String decodedPath = URLDecoder.decode(path, "UTF-8");
-    System.out.println("path: " + decodedPath);
-
     Udplistener udplistener;
 
     String tContainerIp = args[0];
-
 
     //udp listener
     try {
@@ -44,6 +39,7 @@ public class main {
       System.exit(1);
     }
 
+    //thrift api
     try {
       Runnable t3 = new Runnable() {
         @Override
@@ -51,18 +47,21 @@ public class main {
           try {
             while (udplistener.running) {
               TTransport transport = new TSocket(tContainerIp, 9090);
-              try{
-                transport.open();
+                try {
+                  transport.open();
 
-                System.out.println("thrift running");
-                TProtocol protocol = new TBinaryProtocol(transport);
-                sendReceive.Client client = new sendReceive.Client(protocol);
-                client.send_sendCurrent(udplistener.currentValues);
+                  System.out.println("thrift running");
+
+                  TProtocol protocol = new TBinaryProtocol(transport);
+
+                  sendReceive.Client client = new sendReceive.Client(protocol);
+
+                client.sendCurrent(udplistener.currentValues);
 
                 transport.close();
-              }catch (Exception e){
+              } catch (Exception e) {
                 System.out.println("cant conn to thrift server");
-              }finally {
+              } finally {
                 Thread.sleep(2000);
               }
 

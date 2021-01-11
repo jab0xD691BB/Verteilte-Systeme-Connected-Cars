@@ -8,23 +8,19 @@ public class main {
 
   public static void main(String[] args) throws SocketException {
 
-
-    Sensor s = null;
+    Sensor sensor = null;
     int testFlag = 0;
 
     try {
-      Thread.sleep((long)(Math.random() * 1000)); //prevent spamming?
+      Thread.sleep((long) (Math.random() * 1000));
 
-      s = new Sensor(args[0], args[1], args[2]);
+      sensor = new Sensor(args[0], args[1], args[2]);
 
     } catch (ArrayIndexOutOfBoundsException | InterruptedException e) {
-      //sensorTyp = "Tank";
-      //sensorIp = "127.0.0.1";
-      //sensorPort = "9876";
-      s = new Sensor("Tank", "127.0.0.1", "9876");
+      sensor = new Sensor("Tank", "127.0.0.1", "9876");
     }
 
-    if(testFlag == 1) {
+    if (testFlag == 1) {
       String strDummy = "{'sensorType':'Test','sensorPort':'9876','sensorIp':'127.0.0.1','sensorValue':'15'}";
 
       try {
@@ -43,14 +39,14 @@ public class main {
 
         for (int i = 0; i < 10; i++) {
           long timestampStart = System.currentTimeMillis();
-          s.sendValue();
+          sensor.sendValue();
           long timestampEnd = System.currentTimeMillis();
           long dauer = timestampEnd - timestampStart;
           System.out.println("Performancetest Aufgabe 2 dauer: " + dauer + " ms");
           Thread.sleep(2000);
         }
       } catch (Exception e) {
-
+        e.printStackTrace();
       }
 
       int counter = 0;
@@ -58,7 +54,7 @@ public class main {
 
         for (int i = 0; i < 1000; i++) {
           System.out.print(counter + ": ");
-          s.sendTest(strDummy);
+          sensor.sendTest(strDummy);
           counter++;
         }
       } catch (Exception e) {
@@ -71,7 +67,7 @@ public class main {
 
     while (true) {
       try {
-        s.sendValue();
+        sensor.sendValue();
         Thread.sleep(2000);
       } catch (Exception e) {
         Thread.currentThread().interrupt();

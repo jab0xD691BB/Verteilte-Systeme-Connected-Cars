@@ -106,7 +106,6 @@ public class HttpApi implements Runnable {
       Scanner myReader = new Scanner(file);
       if (httpReq.path.equals(".")) {
 
-
         StringBuilder line = new StringBuilder();
         while (myReader.hasNextLine()) {
           line.append(myReader.nextLine());
