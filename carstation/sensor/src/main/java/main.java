@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.SocketException;
 import java.sql.Timestamp;
@@ -9,7 +10,7 @@ public class main {
   public static void main(String[] args) throws SocketException {
 
     Sensor sensor = null;
-    int testFlag = 0;
+    int testFlag = 1;
 
     try {
       Thread.sleep((long) (Math.random() * 1000));
@@ -20,14 +21,28 @@ public class main {
       sensor = new Sensor("Tank", "127.0.0.1", "9876");
     }
 
-    if (testFlag == 1) {
-      String strDummy = "{'sensorType':'Test','sensorPort':'9876','sensorIp':'127.0.0.1','sensorValue':'15'}";
+    if (testFlag == 0) {
+      try{
+        //funktional
+        sensor.sendValueDummy();
+
+        //performance
+        for(int i = 0; i < 1000; i++){
+          sensor.sendValueDummy();
+        }
+
+      }catch (IOException e){
+        e.printStackTrace();
+      }
+
+
+      /*String strDummy = "{'sensorType':'Test','sensorPort':'9876','sensorIp':'127.0.0.1','sensorValue':'15'}";
+      Sensor sTest = new Sensor("Test", args[1], "9876");
+      JSONObject jsonDummy = new JSONObject();
 
       try {
-        Sensor sTest = new Sensor("Test", "127.0.0.1", "9876");
 
         JSONObject sendTestJson = sTest.sendTest(strDummy);
-        JSONObject jsonDummy = new JSONObject();
         jsonDummy.put("sensorType", "Test");
         jsonDummy.put("sensorIp", "127.0.0.1");
         jsonDummy.put("sensorPort", "9876");
@@ -61,7 +76,8 @@ public class main {
 
       }
 
-      System.out.println("NICHT FUNKTIONALER TEST");
+      System.out.println("NICHT FUNKTIONALER TEST");*/
+
 
     }
 
@@ -73,6 +89,8 @@ public class main {
         Thread.currentThread().interrupt();
       }
     }
+
+
 
   }
 

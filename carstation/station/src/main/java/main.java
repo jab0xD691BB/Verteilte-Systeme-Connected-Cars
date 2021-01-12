@@ -14,7 +14,11 @@ public class main {
 
   public static void main(String[] args) throws UnsupportedEncodingException {
 
+
     Udplistener udplistener;
+
+    //händisch aktivieren
+    boolean testFlagMeilenStein2 = false;
 
     String tContainerIp = args[0];
 
@@ -76,6 +80,18 @@ public class main {
       new Thread(t3).start();
     } catch (Exception e) {
       e.printStackTrace();
+    }
+
+
+    if(testFlagMeilenStein2) {
+
+      try {
+        Thread test = new Thread(new Meilenstein2Tests(tContainerIp));
+        test.start();
+      } catch (Exception e) {
+
+      }
+
     }
 
 

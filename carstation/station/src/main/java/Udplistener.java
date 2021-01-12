@@ -36,7 +36,7 @@ public class Udplistener implements Runnable, MqttCallback {
   private String brokerIp = "127.0.0.1";
   private String brokerPort = "1883";
   private String[] topics = {"values/Tank", "values/Kilometerstand", "values/Verkehrssituation",
-      "values/avgSpeed"};
+      "values/avgSpeed", "values/Test"};
 
 
   public Udplistener(int port) throws SocketException {

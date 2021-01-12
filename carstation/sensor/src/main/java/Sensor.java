@@ -113,4 +113,39 @@ public class Sensor {
 
     return jsonObject;
   }
+
+  public void sendValueDummy() throws IOException {
+
+    JSONObject jsonObject = new JSONObject();
+    jsonObject.put("sensorType", "TestMqtt");
+    jsonObject.put("sensorIp", sensorIp);
+    jsonObject.put("sensorPort", sensorPort);
+    jsonObject.put("sensorValue", "123");
+
+
+    try {
+      MqttClient client = new MqttClient("tcp://" + sensorIp + ":1883", MqttClient.generateClientId());
+
+      MqttConnectOptions options = new MqttConnectOptions();
+
+      options.setCleanSession(true);
+
+      client.connect(options);
+
+      MqttMessage message = new MqttMessage(jsonObject.toString().getBytes());
+
+      message.setQos(1);
+
+      client.publish("values/" + "Test", message);
+
+      System.out.println("Send: " + jsonObject.toString());
+
+      client.disconnect();
+
+    } catch (MqttException e) {
+      e.printStackTrace();
+    }
+
+  }
+
 }
