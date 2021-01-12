@@ -34,4 +34,4 @@ http://127.0.0.1:3124/values/historyavgSpeedvalue.txt
 
 -----------------------------------------------------------
 
-Das Programm kompaliert automatisch und es ist nichts weiter zu beachten.
+Das Programm kompiliert automatisch und es ist nichts weiter zu beachten.
