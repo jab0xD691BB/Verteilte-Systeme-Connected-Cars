@@ -161,6 +161,8 @@ ___
 
 __Protokoll - Testverfahren zu Aufgabe 3__  
 
+Bitte Testflags beachten! Station - testflagmeilstein2 in der main ca 86
+
 Funktionaler Test:  (Qualität von Thrift)
 
 Vier Nachrichten verschicken und schauen ob diese korrekt Persistieren. 
@@ -183,18 +185,24 @@ ___
 __Protokoll - Testverfahren zu Aufgabe 4__  
 
 
+Bitte Testflags beachten! Station - testflag in der main ca. zeile 24
+
 Funktionaler Test:  
 
 Client gibt abgesendete Nachtichten auf der Console aus.
 Server gibt Empfangene Nachrichten aus, somit wissen wir, dass die Nachrichten abgesendet und angekommen sind.
+Das tun die auch.
 
 nicht Funktionaler Test:    
 
 Korrektheit der Nachrichten vergleichen. Wir verschicken Nachrichten an den Broker und schauen ob die am Subscriber korrekt ankommen. 
+Korrektheit der Nachrichten bleibt bestehen, schon wie bei Aufgabenstellung 2.
 
 Performance Test:
 
-Server mit Nachrichten pentrieren und schauen ob diese ankommen. Somit prüfen die Schnittstellen von MQTT (Broker etc.). 
+Server mit Nachrichten pentrieren und schauen ob diese ankommen. Somit prüfen die Schnittstellen von MQTT (Broker etc.).
+Performance Test 100 %. Es werdem pro Sensor 1000 Testnachrichten abgeschickt und der Server empfängt von Mqtt Broker 4x1000 Nachrichten.
+
 
 ___
 <br/>
