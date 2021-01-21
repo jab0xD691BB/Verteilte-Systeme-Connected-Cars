@@ -212,16 +212,22 @@ __Protokoll - Testverfahren zu Aufgabe 5__
 Funktionaler Test:  Zum Debugen wird ausgegeben in welchen Zustand sich unser Proxies(Thrift-Service)befindet und was passieren muss.
 
 thriftServer                | Name: B   Time: 2021-01-21 09:57:44.775   Primary: true   Alive: true
+
 thriftServer                | Name: A   Time: 2021-01-21 09:57:44.712   Primary: false  Alive: true
 
 Falls unsere Server die Daten erhalten kommt diese Nachricht:
+
 serverB                     | Verkehrssituation frei     Port:9091
+
 serverB                     | Tank      10       Port:9091
 
 Port:9091 bedeutet dabei die weiterleitung an den Secondary Server.
 Der Secondary Server gibts dann diese Nachricht aus:
+
 serverA                     | Verkehrssituation frei     Port:0
+
 serverA                     | Tank      10       Port:0
+
 Dabei bedeutet Port:0 keine Weiterleitung.
 
 
