@@ -223,4 +223,4 @@ __Status__
 - [x] Aufgabe UDP TCP HTPP
 - [x] Aufgabe RPC
 - [x] Aufgabe MoM mittels MQTT
-- [ ] Aufgabe Hochverfügbarkeit und Konsistenz
+- [x] Aufgabe Hochverfügbarkeit und Konsistenz
