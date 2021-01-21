@@ -9,3 +9,7 @@
 /carstation/thrift/target
 /carstation/thrift/.idea
 /carstation/thrift/*.iml
+
+/carstation/providerServer/target
+/carstation/providerServer/.idea
+/carstation/providerServer/*.iml
