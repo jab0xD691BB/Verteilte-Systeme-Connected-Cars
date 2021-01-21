@@ -1,0 +1,1 @@
+java -jar /usr/app/providerServer-1.0-SNAPSHOT.jar $serverName $ip $listeningport $proxyIp

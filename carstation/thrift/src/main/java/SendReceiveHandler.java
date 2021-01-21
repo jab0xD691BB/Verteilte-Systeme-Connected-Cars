@@ -4,22 +4,58 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.TTransport;
+import provider.providerApi;
 import simpleServer.sendReceive;
 
-public class SendReceiveHandler implements sendReceive.Iface {
+public class SendReceiveHandler implements sendReceive.Iface{
+
+  private ReceiveServer receiveServer;
 
   public SendReceiveHandler() {
+    receiveServer = new ReceiveServer();
+    Thread proxy = new Thread(receiveServer);
+    proxy.start();
+
 
   }
 
   @Override
   public void sendCurrent(Map<String, String> sv) throws TException {
     for (Map.Entry<String, String> entry : sv.entrySet()) {
+      System.out.println(
+          System.currentTimeMillis() + " SensorTyp: " + entry.getKey() + " - Sensorvalue: " + entry
+              .getValue());
+    }
+    try {
+      TTransport transport = new TSocket(receiveServer.serverManager.servers.get(receiveServer.serverManager.servers.keySet().toArray()[0]).ip, receiveServer.serverManager.servers.get(receiveServer.serverManager.servers.keySet().toArray()[0]).port);
+      transport.open();
+
+      System.out.println("send to provider server");
+
+      TProtocol protocol = new TBinaryProtocol(transport);
+
+      providerApi.Client client = new providerApi.Client(protocol);
+
+      client.sendCurrentToPrimary(sv, receiveServer.serverManager.ipSecondary ,receiveServer.serverManager.portSecondary);
+
+
+      transport.close();
+    } catch (Exception e) {
+      System.out.println("cant conn to thrift server");
+    }
+
+    /*for (Map.Entry<String, String> entry : sv.entrySet()) {
       System.out.println(
           System.currentTimeMillis() + " SensorTyp: " + entry.getKey() + " - Sensorvalue: " + entry
               .getValue());
@@ -93,9 +129,8 @@ public class SendReceiveHandler implements sendReceive.Iface {
 
       }
 
-    }
+    }*/
 
   }
-
 
 }

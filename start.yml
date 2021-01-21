@@ -57,6 +57,31 @@ services:
       dockerfile: Dockerfile
     ports:
         - 9090:9090/tcp
+        - 9080:9080/tcp
+  server-a:
+    container_name: serverA
+    build:
+      context: ./carstation/providerServer
+      dockerfile: Dockerfile
+    environment:
+      - serverName=A
+      - ip=server-a
+      - listeningport=9091
+      - proxyIp=thrift-server
+    ports:
+        - 9091:9091/tcp
+  server-b:
+    container_name: serverB
+    build:
+      context: ./carstation/providerServer
+      dockerfile: Dockerfile
+    environment:
+      - serverName=B
+      - ip=server-b
+      - listeningport=9092
+      - proxyIp=thrift-server
+    ports:
+        - 9092:9092/tcp
   mosquitto:
     image: "eclipse-mosquitto"
     container_name: "mosquitto"

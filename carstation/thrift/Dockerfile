@@ -14,6 +14,7 @@ FROM openjdk:8-jre-alpine
 COPY --from=build /usr/src/thrift/target /usr/app/
 
 EXPOSE 9090/tcp
+EXPOSE 9080/tcp
 
 COPY thrift.sh /run.sh
 
