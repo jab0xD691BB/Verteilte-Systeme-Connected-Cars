@@ -209,11 +209,36 @@ ___
 
 __Protokoll - Testverfahren zu Aufgabe 5__  
 
-Funktionaler Test:  Serverausfall simulieren und prüfen ob daten persistent sind, indem alle daten ausgegeben werden.
+Funktionaler Test:  Zum Debugen wird ausgegeben in welchen Zustand sich unser Proxies(Thrift-Service)befindet und was passieren muss.
 
-nicht Funktionaler Test:  Serverausfall simulieren und prüfen ob Service weiterläuft.
+thriftServer                | Name: B   Time: 2021-01-21 09:57:44.775   Primary: true   Alive: true
 
-Performance Test: Server für circa 1 minute ausfallen lassen und versuchen Daten zu synchroniseren
+thriftServer                | Name: A   Time: 2021-01-21 09:57:44.712   Primary: false  Alive: true
+
+Falls unsere Server die Daten erhalten kommt diese Nachricht:
+
+serverB                     | Verkehrssituation frei     Port:9091
+
+serverB                     | Tank      10       Port:9091
+
+Port:9091 bedeutet dabei die weiterleitung an den Secondary Server.
+Der Secondary Server gibts dann diese Nachricht aus:
+
+serverA                     | Verkehrssituation frei     Port:0
+
+serverA                     | Tank      10       Port:0
+
+Dabei bedeutet Port:0 keine Weiterleitung.
+
+
+Zudem wird ein Serverausfall simuliert und überprüft ob die Daten beim hochfahren des ausgefallenen Servers mit dem laufenden Server korrespondiert und diese zugleich Persistent bleibt die Files werden bei Docker händisch geöffnet und verglichen.
+
+
+nicht Funktionaler Test:  Serverausfall simulieren und prüfen ob Service weiterläuft, indem Station weiterhin Daten an den Service schickt.
+Wenn kein Server erreichbar ist, gibt unser Proxie No service Available aus.
+
+Performance Test: Server für circa 1 minute ausfallen lassen und versuchen Daten zu synchroniseren.
+Damit wird die Performanz getestet bei einem Serverausfall wo sich bereits viele Daten angesammelt haben zu übertragen.
 ___
 <br/>
 
@@ -223,4 +248,4 @@ __Status__
 - [x] Aufgabe UDP TCP HTPP
 - [x] Aufgabe RPC
 - [x] Aufgabe MoM mittels MQTT
-- [ ] Aufgabe Hochverfügbarkeit und Konsistenz
+- [x] Aufgabe Hochverfügbarkeit und Konsistenz
