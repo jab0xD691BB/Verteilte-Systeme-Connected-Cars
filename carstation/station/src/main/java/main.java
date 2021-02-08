@@ -26,6 +26,7 @@ public class main {
     try {
       udplistener = new Udplistener(9876);
       udplistener.setBrokerIp(args[1]);
+      udplistener.setRootTopic(args[2]);
 
       Thread ta = new Thread(udplistener);
       ta.start();
@@ -36,7 +37,7 @@ public class main {
 
     //http api
     try {
-      Thread t2 = new Thread(new HttpApi());
+      Thread t2 = new Thread(new HttpApi(Integer.parseInt(args[3])));
       t2.start();
 
     } catch (Exception e) {

@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   sensor-tank:
-    container_name: sensor-tank
+    container_name: sensor-tank-A
     build:
       context: ./carstation/sensor
       dockerfile: Dockerfile
@@ -9,8 +9,9 @@ services:
       - sensorname=Tank
       - sensorip=mosquitto
       - sensorport=9876
+      - rootTopic=autoA
   sensor-kilometerstand:
-    container_name: sensor-kilometerstand
+    container_name: sensor-kilometerstand-A
     build:
       context: ./carstation/sensor
       dockerfile: Dockerfile
@@ -18,8 +19,9 @@ services:
       - sensorname=Kilometerstand
       - sensorip=mosquitto
       - sensorport=9876
+      - rootTopic=autoA
   sensor-verkehrssituation:
-    container_name: sensor-verkehrssituation
+    container_name: sensor-verkehrssituation-A
     build:
       context: ./carstation/sensor
       dockerfile: Dockerfile
@@ -27,8 +29,9 @@ services:
       - sensorname=Verkehrssituation
       - sensorip=mosquitto
       - sensorport=9876
+      - rootTopic=autoA
   sensor-avgspeed:
-    container_name: sensor-avgspeed
+    container_name: sensor-avgspeed-A
     build:
       context: ./carstation/sensor
       dockerfile: Dockerfile
@@ -36,20 +39,79 @@ services:
       - sensorname=avgSpeed
       - sensorip=mosquitto
       - sensorport=9876
+      - rootTopic=autoA
   station:
-    container_name: station
+    container_name: station-A
     build:
       context: ./carstation/station
       dockerfile: Dockerfile
     environment:
       - thriftcontainerip=thrift-server
       - brokercontainerip=mosquitto
+      - rootTopic=autoA
+      - httpPort=3124
     ports:
-        - 9876:9876/udp
-        - 9877:9877/udp
-        - 9878:9878/udp
-        - 9879:9879/udp
+        #- 9876:9876/udp
+        #- 9877:9877/udp
+        #- 9878:9878/udp
+        #- 9879:9879/udp
         - 3124:3124/tcp
+  sensor-tankb:
+    container_name: sensor-tank-B
+    build:
+      context: ./carstation/sensor
+      dockerfile: Dockerfile
+    environment:
+      - sensorname=Tank
+      - sensorip=mosquitto
+      - sensorport=9876
+      - rootTopic=autoB
+  sensor-kilometerstandb:
+    container_name: sensor-kilometerstand-B
+    build:
+      context: ./carstation/sensor
+      dockerfile: Dockerfile
+    environment:
+      - sensorname=Kilometerstand
+      - sensorip=mosquitto
+      - sensorport=9876
+      - rootTopic=autoB
+  sensor-verkehrssituationb:
+    container_name: sensor-verkehrssituation-B
+    build:
+      context: ./carstation/sensor
+      dockerfile: Dockerfile
+    environment:
+      - sensorname=Verkehrssituation
+      - sensorip=mosquitto
+      - sensorport=9876
+      - rootTopic=autoB
+  sensor-avgspeedb:
+    container_name: sensor-avgspeed-B
+    build:
+      context: ./carstation/sensor
+      dockerfile: Dockerfile
+    environment:
+      - sensorname=avgSpeed
+      - sensorip=mosquitto
+      - sensorport=9876
+      - rootTopic=autoB
+  stationb:
+    container_name: station-B
+    build:
+      context: ./carstation/station
+      dockerfile: Dockerfile
+    environment:
+      - thriftcontainerip=thrift-server
+      - brokercontainerip=mosquitto
+      - rootTopic=autoB
+      - httpPort=3125
+    ports:
+        #- 9876:9876/udp
+        #- 9877:9877/udp
+        #- 9878:9878/udp
+        #- 9879:9879/udp
+        - 3125:3125/tcp
   thrift-server:
     container_name: thriftServer
     build:
@@ -83,7 +145,7 @@ services:
     ports:
         - 9092:9092/tcp
   mosquitto:
-    image: "eclipse-mosquitto"
+    image: "eclipse-mosquitto:1.6"
     container_name: "mosquitto"
     ports:
       - "1883:1883"

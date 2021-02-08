@@ -15,10 +15,10 @@ public class main {
     try {
       Thread.sleep((long) (Math.random() * 1000));
 
-      sensor = new Sensor(args[0], args[1], args[2]);
+      sensor = new Sensor(args[0], args[1], args[2], args[3]);
 
     } catch (ArrayIndexOutOfBoundsException | InterruptedException e) {
-      sensor = new Sensor("Tank", "127.0.0.1", "9876");
+      sensor = new Sensor("Tank", "127.0.0.1", "9876", "auto");
     }
 
     if (testFlag == 0) {

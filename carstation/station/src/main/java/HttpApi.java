@@ -20,13 +20,12 @@ import org.json.JSONObject;
 
 public class HttpApi implements Runnable {
 
-  private static int PORT = 3124;
 
   private ServerSocket tcpServerSocket;
 
 
-  public HttpApi() throws IOException {
-    tcpServerSocket = new ServerSocket(PORT);
+  public HttpApi(int p) throws IOException {
+    tcpServerSocket = new ServerSocket(p);
   }
 
   private boolean running = true;
@@ -47,22 +46,21 @@ public class HttpApi implements Runnable {
 
         HttpReq httpReq = new HttpReq(httpIn);
 
-
         int i = 0;
         if (httpReq.path.equals(".")) {
 
-          if(httpReq.file.equals("favicon.ico")){
+          if (httpReq.file.equals("favicon.ico")) {
             byte[] fileContent = Files.readAllBytes(new File(httpReq.file).toPath());
             String body = new String(fileContent);
             String header = this
                 .writeHttpHeader("200 Ok", Integer.toString(body.length()), "application/json");
             httpOut.writeBytes(header.concat(body));
 
-          }else{
+          } else {
             String body = getContentOfFile(httpReq);
             String header = this
                 .writeHttpHeader("200 Ok", Integer.toString(body.length()), "text/html");
-            httpOut.writeBytes(header.concat(body));
+            httpOut.writeBytes(header.concat(body)); //fix
           }
 
         } else if (httpReq.path.equals("values")) {
@@ -102,13 +100,22 @@ public class HttpApi implements Runnable {
   private String getContentOfFile(HttpReq httpReq) {
 
     try {
-      File file = new File(httpReq.path,httpReq.file);
+      File file = new File(httpReq.path, httpReq.file);
       Scanner myReader = new Scanner(file);
       if (httpReq.path.equals(".")) {
 
         StringBuilder line = new StringBuilder();
         while (myReader.hasNextLine()) {
-          line.append(myReader.nextLine());
+          String currLine = myReader.nextLine();
+          String newCurrLine = "";
+          if (currLine.toLowerCase().contains("9999")) {
+            newCurrLine = currLine.replace("9999", "" + tcpServerSocket.getLocalPort());
+
+            currLine = newCurrLine;
+          }
+
+
+          line.append(currLine);
         }
 
         return line.toString();
@@ -117,15 +124,15 @@ public class HttpApi implements Runnable {
 
         while (myReader.hasNextLine()) {
           String data = myReader.nextLine();
-          if(!httpReq.file.contains("active")) {
+          if (!httpReq.file.contains("active")) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
             Date parsedDate = dateFormat.parse(data.split(" ")[0] + " " + data.split(" ")[1]);
             Timestamp timestamp = new Timestamp(parsedDate.getTime());
             jsonObject.put(timestamp.toString(),
                 data.split(" ")[2]); // 0+1: timestamp 2: value
-          }else{
+          } else {
             jsonObject.put("activeSensor", data);
-            return  jsonObject.toString();
+            return jsonObject.toString();
           }
           System.out.println("data: " + data);
         }
@@ -152,5 +159,6 @@ public class HttpApi implements Runnable {
     } catch (IOException e) {
     }
   }
+
 
 }

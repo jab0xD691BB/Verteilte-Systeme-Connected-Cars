@@ -30,6 +30,7 @@ EXPOSE 9877/udp
 EXPOSE 9878/udp
 EXPOSE 9879/udp
 EXPOSE 3124/tcp
+EXPOSE 3125/tcp
 
 COPY station.sh /run.sh
 

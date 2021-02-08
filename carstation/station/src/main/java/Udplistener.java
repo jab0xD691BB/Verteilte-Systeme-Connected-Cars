@@ -38,6 +38,8 @@ public class Udplistener implements Runnable, MqttCallback {
   private String[] topics = {"values/Tank", "values/Kilometerstand", "values/Verkehrssituation",
       "values/avgSpeed", "values/Test"};
 
+  private String rootTopic;
+
 
   public Udplistener(int port) throws SocketException {
     this.port = port;
@@ -59,9 +61,8 @@ public class Udplistener implements Runnable, MqttCallback {
       }
     }, 0, 1000);
 
-
     try {
-      MqttClient client = new MqttClient("tcp://" + brokerIp + ":" + brokerPort, "Station");
+      MqttClient client = new MqttClient("tcp://" + brokerIp + ":" + brokerPort, "Station"+rootTopic);
 
       MqttConnectOptions options = new MqttConnectOptions();
 
@@ -72,7 +73,7 @@ public class Udplistener implements Runnable, MqttCallback {
       client.connect(options);
 
       for (String topic : topics) {
-        client.subscribe(topic);
+        client.subscribe(rootTopic + "/" + topic);
       }
 
     } catch (MqttException e) {
@@ -151,7 +152,7 @@ public class Udplistener implements Runnable, MqttCallback {
     String svalue = jsonObject.getString("sensorValue");
 
     //fill map rdy to send
-    currentValues.put(styp, svalue);
+    currentValues.put(styp+rootTopic, svalue);
 
     //persist in txt file
     activeSensor.put(styp, new Timestamp(System.currentTimeMillis()));
@@ -162,6 +163,10 @@ public class Udplistener implements Runnable, MqttCallback {
   @Override
   public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
 
+  }
+
+  public void setRootTopic(String rT) {
+    this.rootTopic = rT;
   }
 
 }

@@ -21,10 +21,13 @@ public class Sensor {
 
   private DatagramSocket clientSocket;
 
-  public Sensor(String sensorType, String sensorIp, String sensorPort) throws SocketException {
+  private String rootTopic;
+
+  public Sensor(String sensorType, String sensorIp, String sensorPort, String rT) throws SocketException {
     this.sensorType = sensorType;
     this.sensorIp = sensorIp;
     this.sensorPort = sensorPort;
+    this.rootTopic = rT;
 
     clientSocket = new DatagramSocket();
 
@@ -79,7 +82,7 @@ public class Sensor {
 
       message.setQos(1);
 
-      client.publish("values/" + sensorType, message);
+      client.publish(rootTopic + "/values/" + sensorType, message);
 
       System.out.println("Send: " + jsonObject.toString());
 
