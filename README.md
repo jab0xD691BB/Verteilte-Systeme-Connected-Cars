@@ -14,6 +14,8 @@ Vorraussetzung ist das Docker lauffähig vorinstalliert ist.
 
 ### Zugriff auf die Daten über die URI
 
+Station A (für Werte von Auto A):
+
 http://127.0.0.1:3124/ 
 
 http://127.0.0.1:3124/values/currentavgSpeedvalue.txt
@@ -31,6 +33,26 @@ http://127.0.0.1:3124/values/historyKilometerstandvalue.txt
 http://127.0.0.1:3124/values/currentavgSpeedvalue.txt
 
 http://127.0.0.1:3124/values/historyavgSpeedvalue.txt
+
+Station B (für Werte von Auto B):
+
+http://127.0.0.1:3125/ 
+
+http://127.0.0.1:3125/values/currentavgSpeedvalue.txt
+
+http://127.0.0.1:3125/values/historyavgSpeedvalue.txt
+
+http://127.0.0.1:3125/values/currentTankvalue.txt
+
+http://127.0.0.1:3125/values/historyTankvalue.txt
+
+http://127.0.0.1:3125/values/currentKilometerstandvalue.txt
+
+http://127.0.0.1:3125/values/historyKilometerstandvalue.txt
+
+http://127.0.0.1:3125/values/currentavgSpeedvalue.txt
+
+http://127.0.0.1:3125/values/historyavgSpeedvalue.txt
 
 -----------------------------------------------------------
 
