@@ -216,22 +216,22 @@ ___
 __Protokoll - Testverfahren zu Aufgabe 5__  
 
 Funktionaler Test:  Zum Debugen wird ausgegeben in welchen Zustand sich unser Proxies(Thrift-Service)befindet und was passieren muss. Außerdem 
-steht drin wann zuletzt sich der Server mit einem Heartbeat gemeldet hat und welcher Server als Primary auserwählt wurde. Alive bedeutet das der Server innerhalb eines Zeitintervalls das Heartbeat geschickt hat und als Lebend angesehen wird.
+steht drin wann zuletzt sich der Server mit einem Heartbeat gemeldet hat und welcher Server als Primary auserwählt wurde. Alive bedeutet das der Server innerhalb eines Zeitintervalls das Heartbeat geschickt hat und als Lebend angesehen wird.<br/>
 
-thriftServer                 | Name: A  Time: 2021-02-09 11:43:15.3     Primary: true   Alive: true
-thriftServer                 | Name: B  Time: 2021-02-09 11:43:14.891   Primary: false  Alive: true
-thriftServer                 | Zustand: Daten an Primay schicken und Primary schickt an Secondary
-
-
-Falls unser Proxie Daten bekommt wird das ausgegeben:
-
-thriftServer                 | 1612870994726 SensorTyp: TankautoA - Sensorvalue: 76
-thriftServer                 | 1612870994727 SensorTyp: KilometerstandautoA - Sensorvalue: 61
-thriftServer                 | 1612870994727 SensorTyp: avgSpeedautoA - Sensorvalue: 55
-thriftServer                 | 1612870994727 SensorTyp: VerkehrssituationautoA - Sensorvalue: m¦¦iger Verkehr
-thriftServer                 | send to provider server
-
-Falls unsere Server die Daten erhalten kommt diese Nachricht:
+thriftServer                 | Name: A  Time: 2021-02-09 11:43:15.3     Primary: true   Alive: true<br/>
+thriftServer                 | Name: B  Time: 2021-02-09 11:43:14.891   Primary: false  Alive: true<br/>
+thriftServer                 | Zustand: Daten an Primay schicken und Primary schickt an Secondary<br/>
+<br/>
+<br/>
+Falls unser Proxie Daten bekommt wird das ausgegeben:<br/>
+<br/>
+thriftServer                 | 1612870994726 SensorTyp: TankautoA - Sensorvalue: 76<br/>
+thriftServer                 | 1612870994727 SensorTyp: KilometerstandautoA - Sensorvalue: 61<br/>
+thriftServer                 | 1612870994727 SensorTyp: avgSpeedautoA - Sensorvalue: 55<br/>
+thriftServer                 | 1612870994727 SensorTyp: VerkehrssituationautoA - Sensorvalue: m¦¦iger Verkehr<br/>
+thriftServer                 | send to provider server<br/>
+<br/>
+Falls unsere Server die Daten erhalten kommt diese Nachricht:<br/>
 
 
 serverA                      | Ankommende Daten:
