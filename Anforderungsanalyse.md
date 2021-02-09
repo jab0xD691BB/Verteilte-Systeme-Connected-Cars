@@ -137,7 +137,7 @@ _Abbildung 4 - Systemdesign zum Meilenstein 3_
 
 ![Alt-Text](res/Abbildung5.png)     
 
-_Abbildung 4 - Neues Systemdesign zur kurzfristigen Änderung zum Meilenstein 3_
+_Abbildung 5 - Neues Systemdesign zur kurzfristigen Änderung zum Meilenstein 3_
 
 
 ___
