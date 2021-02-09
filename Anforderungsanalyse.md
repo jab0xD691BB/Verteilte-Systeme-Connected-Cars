@@ -134,6 +134,12 @@ __3. Meilenstein (12.02.2021): Aufgabe 5. Lauffähig, Protokolliert und getestet
 _Abbildung 4 - Systemdesign zum Meilenstein 3_
 
 
+
+![Alt-Text](res/Abbildung5.png)     
+
+_Abbildung 4 - Neues Systemdesign zur kurzfristigen Änderung zum Meilenstein 3_
+
+
 ___
 <br/>
 
