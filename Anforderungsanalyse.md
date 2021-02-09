@@ -215,13 +215,13 @@ ___
 
 __Protokoll - Testverfahren zu Aufgabe 5__  
 
-Funktionaler Test:  Zum Debugen wird ausgegeben in welchen Zustand sich unser Proxies(Thrift-Service)befindet und was passieren muss. Außerdem 
+Funktionaler Test:<br/>
+Zum Debugen wird ausgegeben in welchen Zustand sich unser Proxies(Thrift-Service)befindet und was passieren muss. Außerdem 
 steht drin wann zuletzt sich der Server mit einem Heartbeat gemeldet hat und welcher Server als Primary auserwählt wurde. Alive bedeutet das der Server innerhalb eines Zeitintervalls das Heartbeat geschickt hat und als Lebend angesehen wird.<br/>
 
 thriftServer                 | Name: A  Time: 2021-02-09 11:43:15.3     Primary: true   Alive: true<br/>
 thriftServer                 | Name: B  Time: 2021-02-09 11:43:14.891   Primary: false  Alive: true<br/>
 thriftServer                 | Zustand: Daten an Primay schicken und Primary schickt an Secondary<br/>
-<br/>
 <br/>
 Falls unser Proxie Daten bekommt wird das ausgegeben:<br/>
 <br/>
@@ -232,33 +232,32 @@ thriftServer                 | 1612870994727 SensorTyp: VerkehrssituationautoA -
 thriftServer                 | send to provider server<br/>
 <br/>
 Falls unsere Server die Daten erhalten kommt diese Nachricht:<br/>
+<br/>
+serverA                      | Ankommende Daten:<br/>
+serverA                      | TankautoA        76       Port:9092<br/>
+serverA                      | KilometerstandautoA      61       Port:9092<br/>
+serverA                      | avgSpeedautoA    55       Port:9092<br/>
+serverA                      | VerkehrssituationautoA   m¦¦iger Verkehr  Port:9092<br/>
+<br/>
+serverA                      | Einzelne Weiterleitung zum Secondary wird vorbereitet<br/>
+<br/>
+serverA                      | send to secondary server<br/>
+<br/>
 
-
-serverA                      | Ankommende Daten:
-serverA                      | TankautoA        76       Port:9092
-serverA                      | KilometerstandautoA      61       Port:9092
-serverA                      | avgSpeedautoA    55       Port:9092
-serverA                      | VerkehrssituationautoA   m¦¦iger Verkehr  Port:9092
-
-serverA                      | Einzelne Weiterleitung zum Secondary wird vorbereitet
-
-serverA                      | send to secondary server
-
-
-Port:9092 bedeutet dabei die weiterleitung an den Secondary Server. Diese wird vom Proxie an den Server mit gegeben.
-Der Secondary Server gibts dann diese Nachricht aus:
-
-serverB                      | TankautoA        76       Port:0
-serverB                      | KilometerstandautoA      61       Port:0
-serverB                      | avgSpeedautoA    55       Port:0
-serverB                      | VerkehrssituationautoA   m¦¦iger Verkehr  Port:0
-
-Dabei bedeutet Port:0 keine Weiterleitung.
-
-
+Port:9092 bedeutet dabei die weiterleitung an den Secondary Server. Diese wird vom Proxie an den Server mit gegeben.<br/>
+Der Secondary Server gibts dann diese Nachricht aus:<br/>
+<br/>
+serverB                      | TankautoA        76       Port:0<br/>
+serverB                      | KilometerstandautoA      61       Port:0<br/>
+serverB                      | avgSpeedautoA    55       Port:0<br/>
+serverB                      | VerkehrssituationautoA   m¦¦iger Verkehr  Port:0<br/>
+<br/>
+Dabei bedeutet Port:0 keine Weiterleitung.<br/>
+<br/>
+<br/>
 Zudem wird ein Serverausfall simuliert und überprüft ob die Daten beim hochfahren des ausgefallenen Servers mit dem laufenden Server korrespondiert und diese zugleich Persistent bleibt die Files werden bei Docker händisch geöffnet und verglichen.
-
-
+<br/>
+<br/>
 nicht Funktionaler Test:  Serverausfall simulieren und prüfen ob Service weiterläuft, indem Station weiterhin Daten an den Service schickt.
 Wenn kein Server erreichbar ist, gibt unser Proxie No service Available aus.
 
