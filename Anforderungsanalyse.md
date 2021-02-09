@@ -258,10 +258,34 @@ Dabei bedeutet Port:0 keine Weiterleitung.<br/>
 Zudem wird ein Serverausfall simuliert und überprüft ob die Daten beim hochfahren des ausgefallenen Servers mit dem laufenden Server korrespondiert und diese zugleich Persistent bleibt die Files werden bei Docker händisch geöffnet und verglichen.
 <br/>
 <br/>
-nicht Funktionaler Test:  Serverausfall simulieren und prüfen ob Service weiterläuft, indem Station weiterhin Daten an den Service schickt.
-Wenn kein Server erreichbar ist, gibt unser Proxie No service Available aus.
-
-Performance Test: Server für circa 1 minute ausfallen lassen und versuchen Daten zu synchroniseren.
+Wenn ein Server zum Secondary gewählt wird..(z.B. neu anschließt nach einem Ausfall)<br/>
+<br/>
+thriftServer                 | Name: B  Time: 2021-02-09 12:12:36.738   Primary: true   Alive: true<br/>
+thriftServer                 | Zustand: Ankommende Daten an Primary schicken<br/>
+serverA                      | Starting the simple providerApi server...<br/>
+thriftServer                 | Name: B  Time: 2021-02-09 12:12:37.239   Primary: true   Alive: true<br/>
+thriftServer                 | Name: A  Time: 2021-02-09 12:12:36.923   Primary: false  Alive: true<br/>
+thriftServer                 | Zustand: Daten an Primay schicken und Primary schickt an Secondary<br/>
+thriftServer                 | Name: B  Time: 2021-02-09 12:12:37.74    Primary: true   Alive: true<br/>
+thriftServer                 | Name: A  Time: 2021-02-09 12:12:37.428   Primary: false  Alive: true<br/>
+thriftServer                 | Zustand: Daten an Primay schicken und Primary schickt an Secondary<br/>
+serverB                      | Komplette Weiterleitung zum Secondary wird vorbereitet<br/>
+serverB                      | Sende currentTankautoB.txt<br/>
+serverA                      | currentTankautoB.txt<br/>
+serverA                      | Mon Feb 08 19:53:56 GMT 2021     TankautoB       9<br/>
+serverA                      | Mon Feb 08 19:53:59 GMT 2021     TankautoB       78<br/>
+serverA                      | Mon Feb 08 19:54:02 GMT 2021     TankautoB       91<br/>
+...<br/>
+und das für jede File..<br/>
+<br/>
+<br/>
+nicht Funktionaler Test:<br/>
+Serverausfall simulieren und prüfen ob Service weiterläuft, indem Station weiterhin Daten an den Service schickt.
+Wenn kein Server im Provider Online ist, gibt unser Proxie No service Available aus.
+<br/>
+<br/>
+Performance Test:<br/> 
+Server für circa 1 minute ausfallen und Daten synchroniseren lassen.
 Damit wird die Performanz getestet bei einem Serverausfall wo sich bereits viele Daten angesammelt haben zu übertragen.
 ___
 <br/>
