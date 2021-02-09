@@ -215,24 +215,43 @@ ___
 
 __Protokoll - Testverfahren zu Aufgabe 5__  
 
-Funktionaler Test:  Zum Debugen wird ausgegeben in welchen Zustand sich unser Proxies(Thrift-Service)befindet und was passieren muss.
+Funktionaler Test:  Zum Debugen wird ausgegeben in welchen Zustand sich unser Proxies(Thrift-Service)befindet und was passieren muss. Außerdem 
+steht drin wann zuletzt sich der Server mit einem Heartbeat gemeldet hat und welcher Server als Primary auserwählt wurde. Alive bedeutet das der Server innerhalb eines Zeitintervalls das Heartbeat geschickt hat und als Lebend angesehen wird.
 
-thriftServer                | Name: B   Time: 2021-01-21 09:57:44.775   Primary: true   Alive: true
+thriftServer                 | Name: A  Time: 2021-02-09 11:43:15.3     Primary: true   Alive: true
+thriftServer                 | Name: B  Time: 2021-02-09 11:43:14.891   Primary: false  Alive: true
+thriftServer                 | Zustand: Daten an Primay schicken und Primary schickt an Secondary
 
-thriftServer                | Name: A   Time: 2021-01-21 09:57:44.712   Primary: false  Alive: true
+
+Falls unser Proxie Daten bekommt wird das ausgegeben:
+
+thriftServer                 | 1612870994726 SensorTyp: TankautoA - Sensorvalue: 76
+thriftServer                 | 1612870994727 SensorTyp: KilometerstandautoA - Sensorvalue: 61
+thriftServer                 | 1612870994727 SensorTyp: avgSpeedautoA - Sensorvalue: 55
+thriftServer                 | 1612870994727 SensorTyp: VerkehrssituationautoA - Sensorvalue: m¦¦iger Verkehr
+thriftServer                 | send to provider server
 
 Falls unsere Server die Daten erhalten kommt diese Nachricht:
 
-serverB                     | Verkehrssituation frei     Port:9091
 
-serverB                     | Tank      10       Port:9091
+serverA                      | Ankommende Daten:
+serverA                      | TankautoA        76       Port:9092
+serverA                      | KilometerstandautoA      61       Port:9092
+serverA                      | avgSpeedautoA    55       Port:9092
+serverA                      | VerkehrssituationautoA   m¦¦iger Verkehr  Port:9092
 
-Port:9091 bedeutet dabei die weiterleitung an den Secondary Server.
+serverA                      | Einzelne Weiterleitung zum Secondary wird vorbereitet
+
+serverA                      | send to secondary server
+
+
+Port:9092 bedeutet dabei die weiterleitung an den Secondary Server. Diese wird vom Proxie an den Server mit gegeben.
 Der Secondary Server gibts dann diese Nachricht aus:
 
-serverA                     | Verkehrssituation frei     Port:0
-
-serverA                     | Tank      10       Port:0
+serverB                      | TankautoA        76       Port:0
+serverB                      | KilometerstandautoA      61       Port:0
+serverB                      | avgSpeedautoA    55       Port:0
+serverB                      | VerkehrssituationautoA   m¦¦iger Verkehr  Port:0
 
 Dabei bedeutet Port:0 keine Weiterleitung.
 
