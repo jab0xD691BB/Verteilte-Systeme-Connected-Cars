@@ -285,10 +285,18 @@ nicht Funktionaler Test:<br/>
 Serverausfall simulieren und prüfen ob Service weiterläuft, indem Station weiterhin Daten an den Service schickt.
 Wenn kein Server im Provider Online ist, gibt unser Proxie No service Available aus.
 <br/>
+thriftServer                 | Zustand: No Server Available - nichts tun<br/>
+<br/>
+Wenn dann ein Server Online kommt läuft alles wie oben beschrieben im Funktionalen Teil weiter.
+Hier wurde getestet wie gut und schnell der Proxie auf Veränderung reagieren kann. Ohne große Datenverluste zu haben.
+Ergebnis: Unser Proxy reagiert und verarbeitet schnell Veränderungen, und geht kann sich ebenfalls um die Kommunikation kümmern.
+<br/>
 <br/>
 Performance Test:<br/> 
-Server für circa 1 minute ausfallen und Daten synchroniseren lassen.
-Damit wird die Performanz getestet bei einem Serverausfall wo sich bereits viele Daten angesammelt haben zu übertragen.
+Ein Server für circa 1 minute ausfallen und Daten synchroniseren lassen.
+Damit wird die Performanz getestet bei einem Serverausfall wo sich bereits viele Daten angesammelt haben zu übertragen. Bei uns sind es acht Files die von den Sensoren kommen die wie beim Funktionalen Test bereits beschrieben auch auf der Konsole ausgegeben werden bei der Übertragung.
+Am ende wurden händisch die Files verglichen.<br/>
+Ergebnis: Das System ist nicht abgestürzt und hat alle Daten Persistent übertragen, zu 100%. 
 ___
 <br/>
 
